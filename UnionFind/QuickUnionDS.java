@@ -1,5 +1,3 @@
-import javax.management.QueryExp;
-
 public class QuickUnionDS{
     
     private int[] parent;
@@ -16,6 +14,7 @@ public class QuickUnionDS{
 
     private int find(int p){
         int val = p;
+
         while (parent[val] > -1){
             val = parent[val];
             System.out.println("Searching .. " +val);
@@ -50,9 +49,12 @@ public class QuickUnionDS{
         QuickUnionDS q = new QuickUnionDS(10);
         System.out.println("STARTING");
         
-        int x = q.find(5);
-        int y = q.find(2);
-        int gg = 2;
+        // int x = q.find(5);
+        // int y = q.find(2);
+        
+        q.connect(0, 1);
+        q.connect(1, 0);
+        q.print();
 
     }
 }
