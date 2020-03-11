@@ -6,8 +6,8 @@ For the current test assignment: jesperBankTesting
 you will find implementations of the diffrent test classes in the test folder, it is implemented using implementations of interfaces, stubs and fakes
 
 
-SHAKESPEAR ASSSIGNMENT: shakeSpearAlgo
+SHAKESPEAR ASSSIGNMENT: shakespearAlgo folder
 - You will find a algorithm folder and a main folder where all the algortitms have run on the shakespear words
 
-ARRAY PRIO QUE: arrayPrioQue
-Implemented using heap sort, could be optimized just heapifying singuilar elementents maybe, but currently i just heapify the whole thing
+ARRAY PRIO QUE: ArrayPrioQue folder
+- Implemented using heap sort, could be optimized just heapifying singuilar elementents maybe, but currently i just heapify the whole thing
