@@ -6,7 +6,7 @@ Hello reviewer, please locate the folder with the assignments name, there you wi
 
 
 **SHAKESPEAR ASSSIGNMENT: shakespearAlgo folder**
-- You will find a algorithm folder and a main folder where all the algortitms have run on the shakespear words
+- You will find a algorithm folder and a main folder where all the algortitms run on the shakespear words
 
 **ARRAY PRIO QUE: ArrayPrioQue folder**
-- Implemented using heap sort, could be optimized just heapifying singuilar elementents maybe, but currently i just heapify the whole thing
+- Implemented using heap sort, could be optimized just heapifying singuilar elementents on insert, but currently i just heapify the whole thing on every insert
