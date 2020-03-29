@@ -5,6 +5,7 @@ Hello reviewer, please locate the folder with the assignments name, there you wi
  
 - jesperBankTesting contains the contract of which a bankend should implement and that a frontend should expect to be able to call via restendpoints
 - backendBankMock implements this contract using a bunch of dummies and whiteboxs tests that the contract integration is correct, and that each method works and returns the type of which is expected
+We have used a top down implementation from our toolbox, so that the facade is the driver and uses stubs to execute its tests
 
 
 **SEARCH TREE: binarySearchTree folder**
