@@ -1,8 +1,10 @@
 # 6-SemAssignments
 Hello reviewer, please locate the folder with the assignments name, there you will find the awesome solution.
 
-**For the current test assignment: jesperBankTesting** 
-- you will find implementations of the diffrent test classes in the test folder, it is implemented using implementations of interfaces, stubs and fakes
+**For the current test assignment: jesperBankTesting for the contract and backendBankMock for the mocked backend that implements the contract**
+ 
+- jesperBankTesting contains the contract of which a bankend should implement and that a frontend should expect to be able to call via restendpoints
+- backendBankMock implements this contract using a bunch of dummies and whiteboxs tests that the contract integration is correct, and that each method works and returns the type of which is expected
 
 
 **SEARCH TREE: binarySearchTree folder**

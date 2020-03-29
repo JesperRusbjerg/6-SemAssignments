@@ -1,3 +1,16 @@
+dk/cphbusiness/contract/AccountContract.class
+dk/cphbusiness/dto/BankDTO.class
+dk/cphbusiness/banking/MovementHistory.class
+dk/cphbusiness/banking/Movement.class
+dk/cphbusiness/bankingInterfaces/IBank.class
+dk/cphbusiness/bankingInterfaces/IAccount.class
 dk/cphbusiness/banking/Account.class
+dk/cphbusiness/bankingInterfaces/ICustomer.class
+dk/cphbusiness/miscellaneous/BaseCustomer.class
 dk/cphbusiness/banking/Bank.class
+dk/cphbusiness/contract/CustomerContract.class
+dk/cphbusiness/dto/AccountDTO.class
+dk/cphbusiness/dto/CustomerDTO.class
+dk/cphbusiness/miscellaneous/BankTool.class
+dk/cphbusiness/contract/BankContract.class
 dk/cphbusiness/banking/Customer.class

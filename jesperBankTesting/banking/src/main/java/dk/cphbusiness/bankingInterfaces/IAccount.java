@@ -1,10 +1,6 @@
 package dk.cphbusiness.bankingInterfaces;
 
-import dk.cphbusiness.banking.Account;
-
 public interface IAccount {
-    
-    int balance = 0;
 
     public IBank getBank();
     

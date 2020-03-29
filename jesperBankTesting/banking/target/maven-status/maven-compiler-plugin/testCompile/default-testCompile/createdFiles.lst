@@ -1,6 +1,10 @@
+dk/cphbusiness/banking/CustomerTest.class
+dk/cphbusiness/stubsAndDummies/BankDummy.class
+dk/cphbusiness/stubsAndDummies/AccountDummy.class
+dk/cphbusiness/banking/MovementTest.class
+dk/cphbusiness/stubsAndDummies/CustomerDummy.class
+dk/cphbusiness/banking/AccountTest.class
 dk/cphbusiness/banking/AccountMockingTest$1.class
 dk/cphbusiness/banking/AccountMockingTest.class
-dk/cphbusiness/banking/AccountTest.class
-dk/cphbusiness/banking/BankStub.class
-dk/cphbusiness/banking/CustomerDummy.class
-dk/cphbusiness/banking/BankDummy.class
+dk/cphbusiness/stubsAndDummies/BankStub.class
+dk/cphbusiness/banking/BankTest.class

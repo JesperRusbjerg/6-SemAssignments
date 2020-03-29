@@ -4,13 +4,15 @@ import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
 
+import java.util.List;
+
 public class BankStub implements IBank {
   private IAccount account;
 
   @Override
   public IAccount getAccount(String number) {
     // TODO Auto-generated method stub
-    return null;
+    return account;
   }
 
   @Override
@@ -21,7 +23,7 @@ public class BankStub implements IBank {
 
   @Override
   public void setAccount(IAccount account) {
-    // TODO Auto-generated method stub
+    this.account = account;
 
   }
 
@@ -43,7 +45,15 @@ public class BankStub implements IBank {
     return null;
   }
 
-  
-
- 
+  @Override
+  public List<IAccount> getAccounts() {
+    return null;
   }
+
+  @Override
+  public List<ICustomer> getCustomers() {
+    return null;
+  }
+
+
+}

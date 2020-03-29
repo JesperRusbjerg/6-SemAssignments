@@ -4,6 +4,8 @@ import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
 
+import java.util.List;
+
 public class BankDummy implements IBank {
 
   @Override
@@ -33,6 +35,16 @@ public class BankDummy implements IBank {
   @Override
   public String getName() {
     // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public List<IAccount> getAccounts() {
+    return null;
+  }
+
+  @Override
+  public List<ICustomer> getCustomers() {
     return null;
   }
 

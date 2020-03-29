@@ -1,6 +1,8 @@
 package dk.cphbusiness.bankingInterfaces;
 
 
+import java.util.List;
+
 public interface IBank {
   IAccount getAccount(String number);
   void registerAccount(IAccount account);
@@ -8,4 +10,6 @@ public interface IBank {
   ICustomer getCustomer(String number);
   void registerCustomer(ICustomer customer);
   String getName();
+  List<IAccount> getAccounts();
+  List<ICustomer> getCustomers();
   }

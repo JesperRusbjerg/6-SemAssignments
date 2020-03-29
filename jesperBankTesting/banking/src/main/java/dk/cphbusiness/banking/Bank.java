@@ -12,12 +12,12 @@ public class Bank implements IBank {
     private List<IAccount> accounts;
     private List<ICustomer> customers;
 
-    public Bank(){
+    public Bank() {
         accounts = new ArrayList<IAccount>();
         customers = new ArrayList<ICustomer>();
     }
 
-    public Bank(List<IAccount> accounts, List<ICustomer> customers){
+    public Bank(List<IAccount> accounts, List<ICustomer> customers) {
         this.accounts = accounts;
         this.customers = customers;
     }
@@ -25,11 +25,11 @@ public class Bank implements IBank {
     @Override
     public IAccount getAccount(String number) {
         for (IAccount acc : accounts) {
-            if(acc.getNumber().equals(number)){
+            if (acc.getNumber().equals(number)) {
                 return acc;
             }
         }
-    return null;
+        return null;
     }
 
     @Override
@@ -40,11 +40,11 @@ public class Bank implements IBank {
     @Override
     public ICustomer getCustomer(String number) {
         for (ICustomer cust : customers) {
-            if(cust.getNumber().equals(number)){
+            if (cust.getNumber().equals(number)) {
                 return cust;
             }
         }
-    return null;
+        return null;
     }
 
     @Override
@@ -60,16 +60,18 @@ public class Bank implements IBank {
     @Override
     public void setAccount(IAccount account) {
         for (IAccount ac : accounts) {
-            if(account.getNumber().equals(ac.getNumber())){
+            if (account.getNumber().equals(ac.getNumber())) {
                 ac = account;
             }
         }
     }
-
-    
-
-    
-
-    
+    @Override
+    public List<IAccount> getAccounts(){
+        return accounts;
+    }
+    @Override
+    public List<ICustomer> getCustomers(){
+        return customers;
+    }
 
 }
