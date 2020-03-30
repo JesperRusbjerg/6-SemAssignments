@@ -1,0 +1,6 @@
+dto/BankDTO.class
+contract/BankContract.class
+contract/CustomerContract.class
+dto/CustomerDTO.class
+contract/AccountContract.class
+dto/AccountDTO.class

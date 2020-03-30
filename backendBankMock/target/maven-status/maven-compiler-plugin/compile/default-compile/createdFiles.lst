@@ -1,7 +1,0 @@
-stubsAndDummies/CustomerStub.class
-stubsAndDummies/AccountStub.class
-facade/CustomerFacade.class
-facade/BankFacade.class
-facade/AccountFacade.class
-stubsAndDummies/Test.class
-stubsAndDummies/BankStub.class

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dkk.cphbusiness</groupId>
+    <artifactId>bankContract</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+ <!--THIS IS NEEDED TO NOT GET COMPILE 5 ERROR -->
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+        <maven.test.failure.ignore>true</maven.test.failure.ignore>
+    </properties>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.2</version>
+                    <executions>
+                        <execution>
+                            <id>default-jar</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>test-jar</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>test-jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+    </build>
+
+    <!--THE END OF IT!!!!!!!!11 -->
+
+    <dependencies>
+
+        <dependency>
+            <groupId>dk.cphbusiness</groupId>
+            <artifactId>banking</artifactId>
+            <version>0.9</version>
+            <scope>system</scope>
+            <systemPath>/home/jesper/Documents/code/6sem/6-SemAssignments/jesperBankTesting/banking/target/banking-0.9.jar</systemPath>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jmock</groupId>
+            <artifactId>jmock-junit4</artifactId>
+            <version>2.12.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+
+</project>
