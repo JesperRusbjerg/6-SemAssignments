@@ -3,9 +3,8 @@ Hello reviewer, please locate the folder with the assignments name, there you wi
 
 **For the current TEST assignment: jesperBankTesting for the contract, and backendBankMock for the mocked backend that implements the contract**
  
-- jesperBankTesting contains the contract of which a bankend should implement and that a frontend should expect to be able to call via restendpoints
-- backendBankMock implements this contract using a bunch of dummies and whiteboxs tests that the contract integration is correct, and that each method works and returns the type of which is expected
-We have used a top down implementation from our toolbox, so that the facade is the driver and uses stubs to execute its tests
+- jesperBankTesting repo is the backendmock
+- bankContract repo is the backcontract which is implemented and tested by jesperBankTesting
 
 
 **SEARCH TREE: binarySearchTree folder**
