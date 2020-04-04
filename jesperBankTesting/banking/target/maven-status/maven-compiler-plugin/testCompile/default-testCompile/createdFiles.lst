@@ -1,9 +1,12 @@
-dk/cphbusiness/banking/CustomerTest.class
+dk/cphbusiness/banking/ImplementationsTests/AccountMockingTest$1.class
 dk/cphbusiness/stubsAndDummies/BankDummy.class
 dk/cphbusiness/stubsAndDummies/AccountDummy.class
-dk/cphbusiness/banking/MovementTest.class
+dk/cphbusiness/banking/fakes/DataLayerFake.class
+dk/cphbusiness/banking/ImplementationsTests/BankTest.class
 dk/cphbusiness/stubsAndDummies/CustomerDummy.class
-dk/cphbusiness/banking/AccountMockingTest$1.class
-dk/cphbusiness/banking/AccountMockingTest.class
+dk/cphbusiness/banking/ImplementationsTests/CustomerTest.class
+dk/cphbusiness/banking/datalayerTest/DatalayerTest.class
+dk/cphbusiness/banking/ImplementationsTests/AccountMockingTest.class
 dk/cphbusiness/stubsAndDummies/BankStub.class
-dk/cphbusiness/banking/BankTest.class
+dk/cphbusiness/banking/ImplementationsTests/MovementTest.class
+dk/cphbusiness/banking/ImplementationsTests/AccountTest.class

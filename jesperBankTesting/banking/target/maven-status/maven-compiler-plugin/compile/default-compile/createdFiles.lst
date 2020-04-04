@@ -1,3 +1,5 @@
+dk/cphbusiness/datalayer/IDataLayer.class
+dk/cphbusiness/datalayer/DBConnect.class
 dk/cphbusiness/banking/MovementHistory.class
 dk/cphbusiness/banking/Movement.class
 dk/cphbusiness/bankingInterfaces/IBank.class

@@ -1,5 +1,6 @@
 package dk.cphbusiness.facade;
 
+import dk.cphbusiness.banking.Account;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
@@ -8,20 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankStub implements IBank {
+    Account a = null;
 
     @Override
     public IAccount getAccount(String s) {
-        return null;
+        return a;
     }
 
     @Override
     public void registerAccount(IAccount iAccount) {
-
+    a = (Account) iAccount;
     }
 
     @Override
     public void setAccount(IAccount iAccount) {
-
+        a = (Account) iAccount;
     }
 
     @Override

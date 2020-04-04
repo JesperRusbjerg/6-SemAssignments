@@ -11,6 +11,7 @@ public class Bank implements IBank {
 
     private List<IAccount> accounts;
     private List<ICustomer> customers;
+    private String name;
 
     public Bank() {
         accounts = new ArrayList<IAccount>();
@@ -74,4 +75,7 @@ public class Bank implements IBank {
         return customers;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

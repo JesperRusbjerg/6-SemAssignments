@@ -16,7 +16,11 @@ public class Account implements IAccount {
     this.number = number;
   }
 
-  public IBank getBank() {
+    public Account() {
+
+    }
+
+    public IBank getBank() {
     return bank;
     }
 
@@ -43,6 +47,19 @@ public class Account implements IAccount {
     transfer(amount, target);
     }
 
-    
-
+  public void setBank(IBank bank) {
+    this.bank = bank;
   }
+
+  public void setCustomer(ICustomer customer) {
+    this.customer = customer;
+  }
+
+  public void setNumber(String number) {
+    this.number = number;
+  }
+
+  public void setBalance(long balance) {
+    this.balance = balance;
+  }
+}

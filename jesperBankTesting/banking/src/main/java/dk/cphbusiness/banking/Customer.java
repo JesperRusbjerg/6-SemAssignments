@@ -12,6 +12,10 @@ public class Customer implements ICustomer{
         this.name = name;
     }
 
+    public Customer() {
+
+    }
+
     @Override
     public String getNumber() {
         return number;
@@ -22,4 +26,11 @@ public class Customer implements ICustomer{
     }
 
 
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
