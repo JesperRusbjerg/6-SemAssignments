@@ -1,10 +1,10 @@
 # 6-SemAssignments
 Hello reviewer, please locate the folder with the assignments name, there you will find the awesome solution.
 
-**For the current TEST assignment: jesperBankTesting for the contract, and backendBankMock for the mocked backend that implements the contract**
+**For the current TEST assignment: jesperBankTesting for the backend where DB setup and mocks are**
  
-- jesperBankTesting repo is the backendmock
-- bankContract repo is the backcontract which is implemented and tested by jesperBankTesting
+- In the src/java folder you will find a Datalayer package with a implementation of the datalayer interface, this interface can also be used to mock a datalayer
+- in the test folder you will find tests for the implemented datalayer, where there also is a strategy for the database mock and tear up / tear down between each test.. The tear up / tear down is made in the DBSetup class
 
 
 **SEARCH TREE: binarySearchTree folder**
