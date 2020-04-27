@@ -14,14 +14,15 @@ public class BankDTO {
     private List<ICustomer> customers = new ArrayList();
 
     public BankDTO(IBank bank) {
-
-
         for (IAccount a : bank.getAccounts()) {
             accounts.add(a);
         }
         for (ICustomer c: bank.getCustomers()) {
             customers.add(c);
         }
+    }
+
+    public BankDTO() {
     }
 
     public List<IAccount> getAccounts() {

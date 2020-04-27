@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="facadeTest.BankFacadeTest" time="0.007" errors="2" skipped="0">
+<testsuite tests="2" failures="0" name="facadeTest.BankFacadeTest" time="0.015" errors="2" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="13.0.2+8"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-13-oracle/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/jesper/Documents/code/6sem/test6semgit/bankContract"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/jesper/Documents/code/6sem/6-SemAssignments/bankContract"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -13,7 +13,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/jesper/Documents/code/6sem/test6semgit/bankContract"/>
+    <property name="user.dir" value="/home/jesper/Documents/code/6sem/6-SemAssignments/bankContract"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="13.0.2+8"/>
     <property name="os.arch" value="amd64"/>
@@ -30,7 +30,7 @@
     <property name="java.class.version" value="57.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="5.3.0-42-generic"/>
+    <property name="os.version" value="5.3.0-46-generic"/>
     <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/jesper"/>
     <property name="user.timezone" value="Europe/Copenhagen"/>
@@ -55,7 +55,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
   </properties>
-  <testcase classname="facadeTest.BankFacadeTest" name="BankFacade_Get_Customers_Test" time="0.007">
+  <testcase classname="facadeTest.BankFacadeTest" name="BankFacade_Get_Customers_Test" time="0.015">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at facadeTest.BankFacadeTest.BankFacade_Get_Customers_Test(BankFacadeTest.java:17)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -94,7 +94,7 @@
   </testcase>
   <testcase classname="facadeTest.BankFacadeTest" name="BankFacade_Get_Accounts_Test" time="0">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at facadeTest.BankFacadeTest.BankFacade_Get_Accounts_Test(BankFacadeTest.java:24)
+	at facadeTest.BankFacadeTest.BankFacade_Get_Accounts_Test(BankFacadeTest.java:23)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

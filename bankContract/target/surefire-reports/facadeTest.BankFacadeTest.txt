@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: facadeTest.BankFacadeTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.058 sec <<< FAILURE!
-BankFacade_Get_Customers_Test(facadeTest.BankFacadeTest)  Time elapsed: 0.007 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.079 sec <<< FAILURE!
+BankFacade_Get_Customers_Test(facadeTest.BankFacadeTest)  Time elapsed: 0.015 sec  <<< ERROR!
 java.lang.NullPointerException
 	at facadeTest.BankFacadeTest.BankFacade_Get_Customers_Test(BankFacadeTest.java:17)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -40,7 +40,7 @@ java.lang.NullPointerException
 
 BankFacade_Get_Accounts_Test(facadeTest.BankFacadeTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.NullPointerException
-	at facadeTest.BankFacadeTest.BankFacade_Get_Accounts_Test(BankFacadeTest.java:24)
+	at facadeTest.BankFacadeTest.BankFacade_Get_Accounts_Test(BankFacadeTest.java:23)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

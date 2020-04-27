@@ -87,6 +87,8 @@ public class DatalayerTest {
         List<IAccount> accs = dli.getAccountsBank(1);
         Assert.assertNotNull(accs);
 
+       // ScriptRunner sr = new ScriptRunner(null, false, false);
+
     }
 
     @Test

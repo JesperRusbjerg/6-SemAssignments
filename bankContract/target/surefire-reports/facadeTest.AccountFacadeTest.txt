@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: facadeTest.AccountFacadeTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.001 sec <<< FAILURE!
-AccountFacade_edit_Balance(facadeTest.AccountFacadeTest)  Time elapsed: 0.001 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+AccountFacade_edit_Balance(facadeTest.AccountFacadeTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.NullPointerException
 	at facadeTest.AccountFacadeTest.AccountFacade_edit_Balance(AccountFacadeTest.java:40)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)

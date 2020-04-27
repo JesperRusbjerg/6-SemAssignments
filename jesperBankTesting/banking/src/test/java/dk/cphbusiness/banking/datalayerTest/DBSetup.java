@@ -1,7 +1,12 @@
 package dk.cphbusiness.banking.datalayerTest;
 
 import dk.cphbusiness.datalayer.DBConnect;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,29 +30,18 @@ public class DBSetup {
 
         DBConnect dbc = new DBConnect();
         Connection con = dbc.getCon();
+
+        ScriptRunner runner = new ScriptRunner(con);
+
+        Reader reader = null;
         try {
-            Statement state = con.createStatement();
-
-            List<String> commands = new ArrayList();
-            commands.add("SET FOREIGN_KEY_CHECKS = 0;");
-            commands.add("DROP TABLE IF EXISTS bank;");
-            commands.add("CREATE TABLE bank (" +
-                    "    id        INT PRIMARY KEY AUTO_INCREMENT," +
-                    "    name varchar(255)" +
-                    "  );");
-            //Inserts into bank
-            commands.add("insert into bank (name) values (\"Danske bank\");");
-            commands.add("insert into bank (name) values (\"AL\");");
-            commands.add(" SET FOREIGN_KEY_CHECKS = 1;");
-
-
-            for (String s : commands) {
-                state.execute(s);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+            reader = new BufferedReader(new FileReader("banktables.sql"));
+        } catch (FileNotFoundException e) {
+            System.out.println("read file failed");
         }
+        //Running the script
+        runner.runScript(reader);
+
 
     }
 
@@ -126,6 +120,11 @@ public class DBSetup {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        DBSetup dbs = new DBSetup();
+        dbs.resetBanksTable();
     }
 
 }

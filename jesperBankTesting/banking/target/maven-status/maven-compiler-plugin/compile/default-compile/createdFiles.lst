@@ -11,6 +11,7 @@ dk/cphbusiness/miscellaneous/BaseCustomer.class
 dk/cphbusiness/banking/Bank.class
 dk/cphbusiness/facade/BankFacadeDummy.class
 dk/cphbusiness/facade/AccountStub.class
+dk/cphbusiness/datalayer/DataLayerImpl.class
 dk/cphbusiness/miscellaneous/BankTool.class
 dk/cphbusiness/facade/AccountFacadeDummy.class
 dk/cphbusiness/facade/BankStub.class

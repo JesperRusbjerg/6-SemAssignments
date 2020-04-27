@@ -17,6 +17,10 @@ public class AccountDTO {
         this.balance = a.getBalance();
     }
 
+
+    public AccountDTO() {
+    }
+
     public BankDTO getBank() {
         return bank;
     }
