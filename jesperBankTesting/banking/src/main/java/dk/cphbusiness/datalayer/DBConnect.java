@@ -12,21 +12,27 @@ public class DBConnect {
 
     }
 
-    private static Connection getConnection()
-    {
+    private static Connection getConnection() {
         String url = "jdbc:mysql://localhost:3306/bank";
         String username = "jezper";
         String password = "Toonage1555#";
 
         System.out.println("Connecting database...");
+        Connection conn = null;
+        try {
+            conn =
+                    DriverManager.getConnection("jdbc:mysql://localhost/bank?" +
+                            "user=jezper&password=Toonage1555#");
 
-        try  {
-            con = DriverManager.getConnection(url, username, password);
-            System.out.println("Database connected!");
-        } catch (SQLException e) {
-            throw new IllegalStateException("Cannot connect the database!", e);
+            // Do something with the Connection
+
+        } catch (SQLException ex) {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
         }
-        return con;
+        return conn;
     }
 
     public Connection getCon() {
@@ -36,7 +42,9 @@ public class DBConnect {
     }
 
     public static void main(String[] args){
+        System.out.println("ho");
         DBConnect d = new DBConnect();
+        d.getCon();
 
     }
 }

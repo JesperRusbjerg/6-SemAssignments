@@ -45,10 +45,10 @@ public class DatalayerTest {
         ResultSet res = meta.getTables(null, null, "account",
                 new String[] {"TABLE"});
         DatabaseMetaData meta1 = con.getMetaData();
-        ResultSet res2 = meta1.getTables(null, null, "account",
+        ResultSet res2 = meta1.getTables(null, null, "bank",
                 new String[] {"TABLE"});
         DatabaseMetaData meta2 = con.getMetaData();
-        ResultSet res3 = meta2.getTables(null, null, "account",
+        ResultSet res3 = meta2.getTables(null, null, "customer",
                 new String[] {"TABLE"});
 
         Assert.assertNotNull(res);

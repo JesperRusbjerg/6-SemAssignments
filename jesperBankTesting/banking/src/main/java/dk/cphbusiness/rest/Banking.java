@@ -16,6 +16,7 @@ import org.glassfish.jersey.internal.inject.Custom;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/banking")
@@ -26,7 +27,7 @@ public class Banking {
 
     @Path("/customer/{id}")
     @GET
-    public String getCustomerFromID(@PathParam("id") final String id){
+    public Response getCustomerFromID(@PathParam("id") final String id) {
         CustomerFacadeDummy cf = new CustomerFacadeDummy();
 
         CustomerDTO customer = cf.getCusomter(id);
@@ -40,12 +41,12 @@ public class Banking {
             e.printStackTrace();
         }
 
-        return jsonString;
+        return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
     }
 
     @Path("/account/{number}")
     @GET
-    public String getAccountFromNumber(@PathParam("number") final String number){
+    public Response getAccountFromNumber(@PathParam("number") final String number) {
         AccountFacadeDummy af = new AccountFacadeDummy();
 
         BankDTO b = new BankDTO();
@@ -59,13 +60,10 @@ public class Banking {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return jsonString;
+        return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
     }
 
 
-
-
-
-
-
 }
+
+
