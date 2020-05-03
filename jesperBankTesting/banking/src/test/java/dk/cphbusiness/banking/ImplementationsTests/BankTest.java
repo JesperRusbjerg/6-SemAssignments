@@ -14,7 +14,7 @@ public class BankTest {
   @Test
   public void testGetAndRegisterAccount() throws Exception {
     IAccount acc = new AccountDummy("123");
-    Bank bank = new Bank();
+    Bank bank = new Bank("Danske bank");
     bank.registerAccount(acc);
 
     IAccount iac = bank.getAccount(acc.getNumber());
@@ -25,7 +25,7 @@ public class BankTest {
   @Test
   public void testGetAndRegisterCustomer() throws Exception {
     ICustomer customer = new CustomerDummy();
-    Bank bank = new Bank();
+    Bank bank = new Bank("Dansk benk");
     bank.registerCustomer(customer);
     ICustomer cust = bank.getCustomer(customer.getNumber());
 
@@ -35,7 +35,7 @@ public class BankTest {
   @Test
   public void testSetCustomer() throws Exception {
     IAccount acc = new AccountDummy("22222");
-    Bank bank = new Bank();
+    Bank bank = new Bank("Danske bank");
     bank.registerAccount(acc);
     
     IAccount acc2 = new AccountDummy("22222");

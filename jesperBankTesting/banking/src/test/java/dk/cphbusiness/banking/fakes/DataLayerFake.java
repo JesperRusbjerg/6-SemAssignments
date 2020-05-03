@@ -5,6 +5,7 @@ import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
 import dk.cphbusiness.datalayer.IDataLayer;
 
+import java.sql.SQLException;
 import java.util.List;
 
 // This class would be used in any scenario where you would need a fake data layer
@@ -28,19 +29,25 @@ public class DataLayerFake implements IDataLayer {
     }
 
     @Override
+    public IAccount getAccountONNumber(String number) {
+        return null;
+    }
+
+    @Override
+    public IAccount editBalance(long amount, String accNumber) {
+        return null;
+    }
+
+    @Override
     public List<IAccount> getAccountsBank(int accId) {
         return null;
     }
 
     @Override
-    public List<ICustomer> getCustomers(String number) {
+    public List<ICustomer> getCustomersFromBank(String number) {
         return null;
     }
 
-    @Override
-    public IBank editBank(IBank b, String name) {
-        return null;
-    }
 
     @Override
     public ICustomer fetchCustmer(String number) {
@@ -50,5 +57,10 @@ public class DataLayerFake implements IDataLayer {
     @Override
     public ICustomer editCustomer(ICustomer c) {
         return null;
+    }
+
+    @Override
+    public void transaction(IAccount a, IAccount b) throws SQLException {
+
     }
 }

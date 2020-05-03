@@ -13,14 +13,16 @@ public class Bank implements IBank {
     private List<ICustomer> customers;
     private String name;
 
-    public Bank() {
+    public Bank(String name) {
         accounts = new ArrayList<IAccount>();
         customers = new ArrayList<ICustomer>();
+        this.name = name;
     }
 
-    public Bank(List<IAccount> accounts, List<ICustomer> customers) {
+    public Bank(List<IAccount> accounts, List<ICustomer> customers, String name) {
         this.accounts = accounts;
         this.customers = customers;
+        this.name = name;
     }
 
     @Override

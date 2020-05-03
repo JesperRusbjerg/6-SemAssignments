@@ -6,6 +6,8 @@ import com.sun.net.httpserver.HttpServer;
 import dk.cphbusiness.banking.Account;
 import dk.cphbusiness.banking.Bank;
 import dk.cphbusiness.banking.Customer;
+import dk.cphbusiness.datalayer.DataLayerImpl;
+import dk.cphbusiness.facade.AccountFacade;
 import dk.cphbusiness.facade.AccountFacadeDummy;
 import dk.cphbusiness.facade.CustomerFacadeDummy;
 import dto.AccountDTO;
@@ -47,10 +49,32 @@ public class Banking {
     @Path("/account/{number}")
     @GET
     public Response getAccountFromNumber(@PathParam("number") final String number) {
-        AccountFacadeDummy af = new AccountFacadeDummy();
+        //Switch boolean to true once realDB is setup
+        AccountFacade af = new AccountFacade(new DataLayerImpl(false));
 
         BankDTO b = new BankDTO();
         AccountDTO adto = af.getAccount(number);
+        adto.setBank(b);
+
+        Account a = new Account(null, null ,  "ss");
+
+        ObjectMapper mapper = new ObjectMapper();
+        //Converting the Object to JSONString
+        String jsonString = "";
+        try {
+            jsonString = mapper.writeValueAsString(a);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
+    }
+
+    public static void main(String[] args) {
+
+        AccountFacade af = new AccountFacade(new DataLayerImpl(false));
+
+        BankDTO b = new BankDTO();
+        AccountDTO adto = af.getAccount("333");
         adto.setBank(b);
         ObjectMapper mapper = new ObjectMapper();
         //Converting the Object to JSONString
@@ -60,9 +84,9 @@ public class Banking {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
-    }
 
+        boolean x = false;
+    }
 
 }
 

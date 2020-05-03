@@ -10,7 +10,13 @@ public interface IAccount {
     
     public long getBalance();
     
-    public void transfer(long amount, IAccount target);
-    
-    public void transfer(long amount, String targetNumber);
+    public void transfer(long amount, IAccount target) throws Exception;
+
+    public void setBank(IBank bank);
+    public void setCustomer(ICustomer customer);
+    public void setBalance(long balance);
+    public void setNumber(String number);
+
+
+
 }

@@ -41,10 +41,26 @@ public class AccountDummy implements IAccount {
     }
 
     @Override
-    public void transfer(long amount, String targetNumber) {
-        // TODO Auto-generated method stub
+    public void setBank(IBank bank) {
 
     }
+
+    @Override
+    public void setCustomer(ICustomer customer) {
+
+    }
+
+    @Override
+    public void setBalance(long balance) {
+
+    }
+
+    @Override
+    public void setNumber(String number) {
+
+    }
+
+
 
 
 }

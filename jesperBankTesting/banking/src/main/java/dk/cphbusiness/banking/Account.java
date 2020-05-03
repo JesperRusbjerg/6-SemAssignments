@@ -36,30 +36,34 @@ public class Account implements IAccount {
     return balance;
     }
 
-  public void transfer(long amount, IAccount target) {
+  public void transfer(long amount, IAccount target) throws Exception {
+    if(balance - amount < 0) throw new Exception("Not enough money on the account!!");
+
     balance -= amount;
     Account ac = (Account) target;
     ac.balance += amount;
+
     }
 
-  public void transfer(long amount, String targetNumber) {
-    IAccount target = bank.getAccount(targetNumber);
-    transfer(amount, target);
-    }
-
+  @Override
   public void setBank(IBank bank) {
     this.bank = bank;
   }
 
+  @Override
   public void setCustomer(ICustomer customer) {
     this.customer = customer;
   }
 
+  @Override
+  public void setBalance(long balance) {
+    this.balance = balance;
+  }
+
+  @Override
   public void setNumber(String number) {
     this.number = number;
   }
 
-  public void setBalance(long balance) {
-    this.balance = balance;
-  }
+
 }

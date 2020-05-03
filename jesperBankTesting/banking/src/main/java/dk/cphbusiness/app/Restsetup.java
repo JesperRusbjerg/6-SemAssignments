@@ -1,5 +1,6 @@
 package dk.cphbusiness.app;
 
+import dk.cphbusiness.rest.Banking;
 import dk.cphbusiness.rest.Greetings;
 
 import javax.ws.rs.core.Application;
@@ -12,6 +13,7 @@ public class Restsetup extends Application {
     public Restsetup() {
         // Register our hello service
         singletons.add(new Greetings());
+        singletons.add(new Banking());
     }
     @Override
     public Set<Object> getSingletons() {

@@ -11,6 +11,9 @@ public class AccountFacadeDummy implements AccountContract{
     //Simulate a DB with accs
     public static List<AccountStub> accs = new ArrayList<>();
 
+    public AccountFacadeDummy() {
+    }
+
     @Override
     public List<AccountDTO> getAllAccounts() {
         List<AccountDTO> res = new ArrayList<>();

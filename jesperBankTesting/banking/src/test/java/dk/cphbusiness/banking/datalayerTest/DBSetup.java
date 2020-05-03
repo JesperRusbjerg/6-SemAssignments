@@ -15,40 +15,72 @@ import java.util.List;
 
 public class DBSetup {
 
-    public DBSetup() {
+    Connection con;
+
+    public DBSetup(Connection con) {
+        this.con = con;
     }
 
     public void tearDownAndRebuildEverything() {
 
+       resetBanksTable();
         resetAccountTable();
-        resetBanksTable();
-        resetCustomerTable();
+       resetCustomerTable();
 
     }
 
+        //Can change them all to this if you have time to run scripts instead
+    //        ScriptRunner runner = new ScriptRunner(con);
+
+//        Reader reader = null;
+//        try {
+//            reader = new BufferedReader(new FileReader("banktables.sql"));
+//        } catch (FileNotFoundException e) {
+//            System.out.println("read file failed");
+//        }
+//        //Running the script
+//        runner.runScript(reader);
+
     public void resetBanksTable() {
 
-        DBConnect dbc = new DBConnect();
-        Connection con = dbc.getCon();
-
-        ScriptRunner runner = new ScriptRunner(con);
-
-        Reader reader = null;
         try {
-            reader = new BufferedReader(new FileReader("banktables.sql"));
-        } catch (FileNotFoundException e) {
-            System.out.println("read file failed");
+            Statement state = con.createStatement();
+
+            List<String> commands = new ArrayList();
+            commands.add("SET FOREIGN_KEY_CHECKS = 0;");
+
+            commands.add("drop table if exists bank;");
+
+            commands.add("CREATE TABLE bank (\n" +
+                    "    id        INT PRIMARY KEY AUTO_INCREMENT," +
+                    "    name varchar(255)" +
+                    "  );\n");
+
+            //Inserts into account
+            commands.add("insert into bank (id, name) values (1, \"Danske bank\");");
+            commands.add("insert into bank (id, name) values (2, \"Nordea bank\");");
+
+
+
+            commands.add(" SET FOREIGN_KEY_CHECKS = 1;");
+
+
+            for (String s : commands) {
+                state.execute(s);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        //Running the script
-        runner.runScript(reader);
+
+
+
 
 
     }
 
     public void resetAccountTable() {
 
-        DBConnect dbc = new DBConnect();
-        Connection con = dbc.getCon();
         try {
             Statement state = con.createStatement();
 
@@ -71,7 +103,7 @@ public class DBSetup {
 
             //Inserts into account
             commands.add("insert into account (bank, customer, `number` , balance ) values (1, 1, \"333\", \"22222\");");
-            commands.add("insert into account (bank, customer, `number` , balance ) values (2, 2, \"333\", \"2222\");");
+            commands.add("insert into account (bank, customer, `number` , balance ) values (2, 2, \"3332\", \"2222\");");
 
 
 
@@ -89,8 +121,6 @@ public class DBSetup {
 
     public void resetCustomerTable() {
 
-        DBConnect dbc = new DBConnect();
-        Connection con = dbc.getCon();
         try {
             Statement state = con.createStatement();
             List<String> commands = new ArrayList();
@@ -123,8 +153,9 @@ public class DBSetup {
     }
 
     public static void main(String[] args) {
-        DBSetup dbs = new DBSetup();
-        dbs.resetBanksTable();
+        DBConnect db = new DBConnect();
+        DBSetup dbs = new DBSetup(db.getCon());
+        dbs.tearDownAndRebuildEverything();
     }
 
 }

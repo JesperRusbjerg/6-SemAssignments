@@ -38,7 +38,24 @@ public class AccountStub implements IAccount {
     }
 
     @Override
-    public void transfer(long l, String s) {
+    public void setBank(IBank bank) {
 
     }
+
+    @Override
+    public void setCustomer(ICustomer customer) {
+
+    }
+
+    @Override
+    public void setBalance(long balance) {
+
+    }
+
+    @Override
+    public void setNumber(String number) {
+
+    }
+
+
 }

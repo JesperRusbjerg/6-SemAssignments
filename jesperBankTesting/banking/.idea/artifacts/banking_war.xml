@@ -9,6 +9,12 @@
     </properties>
     <root id="archive" name="banking-0.9.war">
       <element id="artifact" artifact-name="banking:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/../../bankContract/target/bankContract-1.0-SNAPSHOT-tests.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../bankContract/target/bankContract-1.0-SNAPSHOT.jar" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

@@ -7,22 +7,33 @@ import java.sql.SQLException;
 public class DBConnect {
 
     static Connection con=null;
-
+    public static boolean TEST_ENVIROMENT = false;
     public DBConnect()  {
-
     }
 
-    private static Connection getConnection() {
-        String url = "jdbc:mysql://localhost:3306/bank";
-        String username = "jezper";
-        String password = "Toonage1555#";
+    public  void setConnnectionToTestDB(){
+        TEST_ENVIROMENT = false;
+    }
+    public void setConnnectionToRealDB(){
+        TEST_ENVIROMENT = true;
+    }
+
+    public static Connection getConnection() {
 
         System.out.println("Connecting database...");
         Connection conn = null;
+
+        String connectToThisDB = "banktest";
+
+        if(TEST_ENVIROMENT){
+            connectToThisDB = "bank";
+
+        }
+
         try {
             conn =
-                    DriverManager.getConnection("jdbc:mysql://localhost/bank?" +
-                            "user=jezper&password=Toonage1555#");
+                    DriverManager.getConnection("jdbc:mysql://localhost/"+connectToThisDB+"?" +
+                            "user=root&password=toonage15&serverTimezone=UTC");
 
             // Do something with the Connection
 
@@ -44,9 +55,16 @@ public class DBConnect {
     public static void main(String[] args){
         System.out.println("ho");
         DBConnect d = new DBConnect();
+
+
+
         d.getCon();
 
     }
+
+
+
+
 }
 
 

@@ -12,35 +12,30 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.swing.plaf.nimbus.State;
 import java.io.*;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class DatalayerTest {
 
+    private static DataLayerImpl dli = new DataLayerImpl(false);
+    private static DBSetup dbs = new DBSetup(dli.getCon());
+
     @BeforeClass
     public static void before() throws SQLException, IOException {
-        DBSetup dbs = new DBSetup();
+        DBSetup dbs = new DBSetup(dli.getCon());
         dbs.tearDownAndRebuildEverything();
-
     }
 
     @AfterClass
     public static void after() throws SQLException {
-        DBConnect dbc = new DBConnect();
-        Connection con = dbc.getCon();
-        con.close();
+        dli.getCon().close();
     }
 
 
     @Test
     public void Test_Tables_Setup() throws SQLException {
-        DBConnect dbc = new DBConnect();
-        Connection con = dbc.getCon();
+        Connection con = dli.getCon();
         DatabaseMetaData meta = con.getMetaData();
         ResultSet res = meta.getTables(null, null, "account",
                 new String[] {"TABLE"});
@@ -58,7 +53,6 @@ public class DatalayerTest {
 
     @Test
     public void Test_Get_Accounts_DataLayer(){
-        DataLayerImpl dli = new DataLayerImpl();
 
         List<IAccount> accs = dli.getAccounts();
         Assert.assertNotNull(accs);
@@ -69,51 +63,32 @@ public class DatalayerTest {
         Account a = new Account();
         a.setNumber("333");
         a.setBalance(9999);
-        DataLayerImpl dli = new DataLayerImpl();
         dli.editAccount(a);
 
         Account a1 = (Account) dli.getAccount(1);
         Assert.assertEquals(a1.getBalance(), 9999);
 
         //Now i have edited in my account table, therefor i must reset it to standard
-        DBSetup dbs = new DBSetup();
+
         dbs.resetAccountTable();
     }
 
     @Test
     public void Test_Account_Accounts_For_Bank_DataLayer(){
-        DataLayerImpl dli = new DataLayerImpl();
 
         List<IAccount> accs = dli.getAccountsBank(1);
         Assert.assertNotNull(accs);
-
-       // ScriptRunner sr = new ScriptRunner(null, false, false);
 
     }
 
     @Test
     public void Test_Get_Customer_from_number_DataLayer(){
-        DataLayerImpl dli = new DataLayerImpl();
-        List<ICustomer> customers = dli.getCustomers("3dax");
+        List<ICustomer> customers = dli.getCustomersFromBank("3dax");
         Assert.assertNotNull(customers);
     }
 
     @Test
-    public void Test_Edit_Bank_DataLayer(){
-        DataLayerImpl dli = new DataLayerImpl();
-        Bank b = new Bank();
-        b.setName("Kejserens bank");
-
-        dli.editBank(b, "Danske bank");
-
-        //Now i have edited in my bank table, therefor i must reset it to standard
-        DBSetup dbs = new DBSetup();
-        dbs.resetBanksTable();
-    }
-
-    @Test
     public void Test_Edit_And_Fetch_Customer(){
-        DataLayerImpl dli = new DataLayerImpl();
         Customer c = new Customer();
         c.setName("Per hansenxxx");
         c.setNumber("3dax");
@@ -122,8 +97,29 @@ public class DatalayerTest {
         Customer cus = (Customer) dli.fetchCustmer("3dax");
 
         Assert.assertEquals(cus.getName(), "Per hansenxxx");
+    }
+
+
+    @Test
+    public void Test_Transaction_Account_To_Account() throws Exception {
+        long amountToTransfer = 200;
+
+        Account from = (Account) dli.getAccount(1);
+        Account to = (Account) dli.getAccount(2);
+
+        from.transfer(amountToTransfer, to);
+
+        dli.transaction(from, to);
+
+        IAccount fromEdited = dli.getAccount(1);
+        IAccount toEdited = dli.getAccount(2);
+
+        Assert.assertEquals(from.getBalance(), fromEdited.getBalance());
+        Assert.assertEquals(to.getBalance(), toEdited.getBalance());
+
 
     }
+
 
 
 }

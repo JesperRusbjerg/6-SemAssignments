@@ -1,6 +1,7 @@
 package dk.cphbusiness.datalayer;
 
 import dk.cphbusiness.banking.Account;
+import dk.cphbusiness.banking.Bank;
 import dk.cphbusiness.banking.Customer;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
@@ -15,11 +16,15 @@ import java.util.List;
 
 public class DataLayerImpl implements IDataLayer{
 
-    DBConnect dbc = new DBConnect();
-    Connection con = dbc.getCon();
+    Connection con;
 
-
-
+    public DataLayerImpl(boolean realDB) {
+        DBConnect dbc = new DBConnect();
+        if(realDB){
+            dbc.setConnnectionToRealDB();
+        }
+        con = dbc.getCon();
+    }
 
     @Override
     public List<IAccount> getAccounts() {
@@ -64,8 +69,67 @@ public class DataLayerImpl implements IDataLayer{
     @Override
     public IAccount editAccount(IAccount a) {
         try {
+            //Uses number to edit, as this value is unique
             Statement state = con.createStatement();
-            String sql = "UPDATE account set balance ='"+a.getBalance()+"', number ='"+a.getNumber()+"' where "+a.getBalance()+"="+a.getBalance();
+            String sql = "UPDATE account set balance ='"+a.getBalance()+"', number ='"+a.getNumber()+"' where number ="+a.getNumber();
+            state.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public IAccount getAccountONNumber(String number) {
+        try {
+            Statement state = con.createStatement();
+            String sql = "select * from account where number =" + number;
+            ResultSet rs = state.executeQuery(sql);
+
+            if(rs.next()){
+                Account a = new Account();
+
+                int bankId = rs.getInt("bank");
+
+                IBank b = getBank(bankId);
+
+                a.setBank(b);
+                a.setBalance(rs.getLong("balance"));
+                a.setNumber(rs.getString("number"));
+                return a;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public IBank getBank(int id){
+        try {
+            Statement state = con.createStatement();
+            String sql = "select * from bank where id =" + id;
+            ResultSet rs = state.executeQuery(sql);
+
+            if(rs.next()){
+
+                String bankName = rs.getString("name");
+                Bank b = new Bank(bankName);
+
+                return b;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public IAccount editBalance(long amount, String accNumber) {
+        try {
+            //Uses number to edit, as this value is unique
+            Statement state = con.createStatement();
+            String sql = "UPDATE account set balance ='"+amount+"' where number ="+accNumber;
             state.executeUpdate(sql);
 
         } catch (SQLException e) {
@@ -97,7 +161,7 @@ public class DataLayerImpl implements IDataLayer{
     }
 
     @Override
-    public List<ICustomer> getCustomers(String number) {
+    public List<ICustomer> getCustomersFromBank(String number) {
         try {
             Statement state = con.createStatement();
             String sql = "select * from customer where number='"+number+"'";
@@ -111,19 +175,6 @@ public class DataLayerImpl implements IDataLayer{
                 customers.add(c);
             }
             return customers;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @Override
-    public IBank editBank(IBank b, String name) {
-        try {
-            Statement state = con.createStatement();
-            String sql = "UPDATE bank set name ='"+b.getName()+"' where name ='"+name+"'";
-            state.executeUpdate(sql);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -162,4 +213,34 @@ public class DataLayerImpl implements IDataLayer{
         }
         return null;
     }
+
+    @Override
+    public void transaction(IAccount from, IAccount to) throws SQLException {
+            try
+            {
+                con.setAutoCommit(false);
+
+                Statement state = con.createStatement();
+
+                String sql = "UPDATE account set balance ='"+(from.getBalance())+"' where number ='"+from.getNumber()+"'";
+                state.executeUpdate(sql);
+
+                sql = "UPDATE account set balance ='"+(to.getBalance())+"' where number ='"+to.getNumber()+"'";
+                state.executeUpdate(sql);
+
+                con.commit();
+                con.setAutoCommit(true);
+            }
+            catch(Exception e)
+            {
+                con.rollback();
+            }
+
+        }
+
+    public Connection getCon() {
+        return con;
+    }
+
+
 }
