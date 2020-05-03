@@ -30,12 +30,14 @@ public class AccountFacade  {
     return accountDTOs;
     }
 
-    public AccountDTO getAccount(String s) {
+    public IAccount getAccount(String s) {
 
     IAccount a = data.getAccountONNumber(s);
 
-    Account aax = new Account();
-    return new AccountDTO(aax);
+    AccountDTO ax = new AccountDTO();
+
+
+    return a;
     }
 
     public AccountDTO editAccount(AccountDTO accountDTO) {

@@ -6,6 +6,7 @@ import com.sun.net.httpserver.HttpServer;
 import dk.cphbusiness.banking.Account;
 import dk.cphbusiness.banking.Bank;
 import dk.cphbusiness.banking.Customer;
+import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.datalayer.DataLayerImpl;
 import dk.cphbusiness.facade.AccountFacade;
 import dk.cphbusiness.facade.AccountFacadeDummy;
@@ -52,17 +53,13 @@ public class Banking {
         //Switch boolean to true once realDB is setup
         AccountFacade af = new AccountFacade(new DataLayerImpl(false));
 
-        BankDTO b = new BankDTO();
-        AccountDTO adto = af.getAccount(number);
-        adto.setBank(b);
-
-        Account a = new Account(null, null ,  "ss");
+        IAccount adto = af.getAccount(number);
 
         ObjectMapper mapper = new ObjectMapper();
         //Converting the Object to JSONString
         String jsonString = "";
         try {
-            jsonString = mapper.writeValueAsString(a);
+            jsonString = mapper.writeValueAsString(adto);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -74,8 +71,7 @@ public class Banking {
         AccountFacade af = new AccountFacade(new DataLayerImpl(false));
 
         BankDTO b = new BankDTO();
-        AccountDTO adto = af.getAccount("333");
-        adto.setBank(b);
+        IAccount adto = af.getAccount("333");
         ObjectMapper mapper = new ObjectMapper();
         //Converting the Object to JSONString
         String jsonString = "";

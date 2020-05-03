@@ -30,18 +30,15 @@ public class DBConnect {
 
         }
 
-        try {
-            conn =
-                    DriverManager.getConnection("jdbc:mysql://localhost/"+connectToThisDB+"?" +
-                            "user=root&password=toonage15&serverTimezone=UTC");
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/"+connectToThisDB+"","root","toonage15");
 
-            // Do something with the Connection
-
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             // handle any errors
             System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
         }
         return conn;
     }

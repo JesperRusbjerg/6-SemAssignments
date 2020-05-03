@@ -43,6 +43,8 @@
           <element id="library" level="project" name="Maven: org.ow2.asm:asm-debug-all:5.0.4" />
           <element id="library" level="project" name="Maven: com.sun.jersey:jersey-bundle:1.18.3" />
           <element id="library" level="project" name="Maven: javax.ws.rs:jsr311-api:1.1.1" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../bankContract/target/bankContract-1.0-SNAPSHOT.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/../../bankContract/target/bankContract-1.0-SNAPSHOT-tests.jar" />
         </element>
       </element>
       <element id="directory" name="META-INF">
