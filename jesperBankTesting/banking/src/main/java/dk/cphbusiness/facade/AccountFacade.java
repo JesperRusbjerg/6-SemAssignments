@@ -2,9 +2,12 @@ package dk.cphbusiness.facade;
 
 import contract.AccountContract;
 import dk.cphbusiness.banking.Account;
+import dk.cphbusiness.banking.Bank;
 import dk.cphbusiness.bankingInterfaces.IAccount;
+import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.datalayer.IDataLayer;
 import dto.AccountDTO;
+import dto.BankDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +33,15 @@ public class AccountFacade  {
     return accountDTOs;
     }
 
-    public IAccount getAccount(String s) {
+    public AccountDTO getAccount(String s) {
 
     IAccount a = data.getAccountONNumber(s);
 
-    AccountDTO ax = new AccountDTO();
+
+        AccountDTO ac = new AccountDTO(a);
 
 
-    return a;
+    return ac;
     }
 
     public AccountDTO editAccount(AccountDTO accountDTO) {

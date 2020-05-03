@@ -7,6 +7,7 @@ import dk.cphbusiness.banking.Account;
 import dk.cphbusiness.banking.Bank;
 import dk.cphbusiness.banking.Customer;
 import dk.cphbusiness.bankingInterfaces.IAccount;
+import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.datalayer.DataLayerImpl;
 import dk.cphbusiness.facade.AccountFacade;
 import dk.cphbusiness.facade.AccountFacadeDummy;
@@ -53,7 +54,10 @@ public class Banking {
         //Switch boolean to true once realDB is setup
         AccountFacade af = new AccountFacade(new DataLayerImpl(false));
 
-        IAccount adto = af.getAccount(number);
+        AccountDTO adto = af.getAccount(number);
+
+
+
 
         ObjectMapper mapper = new ObjectMapper();
         //Converting the Object to JSONString
@@ -68,22 +72,22 @@ public class Banking {
 
     public static void main(String[] args) {
 
-        AccountFacade af = new AccountFacade(new DataLayerImpl(false));
-
-        BankDTO b = new BankDTO();
-        IAccount adto = af.getAccount("333");
-        ObjectMapper mapper = new ObjectMapper();
-        //Converting the Object to JSONString
-        String jsonString = "";
-        try {
-            jsonString = mapper.writeValueAsString(adto);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        boolean x = false;
+//        AccountFacade af = new AccountFacade(new DataLayerImpl(false));
+//
+//        BankDTO b = new BankDTO();
+//        IAccount adto = af.getAccount("333");
+//        ObjectMapper mapper = new ObjectMapper();
+//        //Converting the Object to JSONString
+//        String jsonString = "";
+//        try {
+//            jsonString = mapper.writeValueAsString(adto);
+//        } catch (JsonProcessingException e) {
+//            e.printStackTrace();
+//        }
+//
+//        boolean x = false;
+//    }
     }
-
 }
 
 
