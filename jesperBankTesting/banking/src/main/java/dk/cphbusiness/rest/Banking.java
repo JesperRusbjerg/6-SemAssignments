@@ -8,7 +8,9 @@ import dk.cphbusiness.banking.Bank;
 import dk.cphbusiness.banking.Customer;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
+import dk.cphbusiness.datalayer.DBConnect;
 import dk.cphbusiness.datalayer.DataLayerImpl;
+import dk.cphbusiness.datalayer.IDataLayer;
 import dk.cphbusiness.facade.AccountFacade;
 import dk.cphbusiness.facade.AccountFacadeDummy;
 import dk.cphbusiness.facade.CustomerFacadeDummy;
@@ -22,6 +24,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Path("/banking")
 public class Banking {
@@ -52,12 +55,12 @@ public class Banking {
     @GET
     public Response getAccountFromNumber(@PathParam("number") final String number) {
         //Switch boolean to true once realDB is setup
-        AccountFacade af = new AccountFacade(new DataLayerImpl(false));
+
+        IDataLayer d = new DataLayerImpl();
+
+        AccountFacade af = new AccountFacade(d);
 
         AccountDTO adto = af.getAccount(number);
-
-
-
 
         ObjectMapper mapper = new ObjectMapper();
         //Converting the Object to JSONString
@@ -70,24 +73,28 @@ public class Banking {
         return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
     }
 
-    public static void main(String[] args) {
+    @Path("/account/all")
+    @GET
+    public Response getAllAccounts() {
+        //Switch boolean to true once realDB is setup
 
-//        AccountFacade af = new AccountFacade(new DataLayerImpl(false));
-//
-//        BankDTO b = new BankDTO();
-//        IAccount adto = af.getAccount("333");
-//        ObjectMapper mapper = new ObjectMapper();
-//        //Converting the Object to JSONString
-//        String jsonString = "";
-//        try {
-//            jsonString = mapper.writeValueAsString(adto);
-//        } catch (JsonProcessingException e) {
-//            e.printStackTrace();
-//        }
-//
-//        boolean x = false;
-//    }
+
+        AccountFacade af = new AccountFacade(new DataLayerImpl());
+
+        List<AccountDTO> adto = af.getAllAccounts();
+
+        ObjectMapper mapper = new ObjectMapper();
+        //Converting the Object to JSONString
+        String jsonString = "";
+        try {
+            jsonString = mapper.writeValueAsString(adto);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
     }
+
+
 }
 
 

@@ -7,34 +7,36 @@ import java.sql.SQLException;
 public class DBConnect {
 
     static Connection con=null;
-    public static boolean TEST_ENVIROMENT = false;
+    public static boolean REAL_DB = true;
     public DBConnect()  {
-    }
-
-    public  void setConnnectionToTestDB(){
-        TEST_ENVIROMENT = false;
-    }
-    public void setConnnectionToRealDB(){
-        TEST_ENVIROMENT = true;
     }
 
     public static Connection getConnection() {
 
         System.out.println("Connecting database...");
         Connection conn = null;
-
-        String connectToThisDB = "banktest";
-
-        if(TEST_ENVIROMENT){
-            connectToThisDB = "bank";
-
-        }
-
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/"+connectToThisDB+"","root","toonage15");
+                    "jdbc:mysql://localhost:3306/bank","root","toonage15");
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            // handle any errors
+            System.out.println("SQLException: " + ex.getMessage());
+        }
+        return conn;
+    }
+
+    public static Connection getTestConnection() {
+
+        System.out.println("Connecting Test database...");
+        Connection conn = null;
+        try
+        {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/banktest","root","toonage15");
 
         } catch (SQLException | ClassNotFoundException ex) {
             // handle any errors
@@ -50,7 +52,9 @@ public class DBConnect {
     }
 
     public static void main(String[] args){
-        System.out.println("ho");
+
+
+
         DBConnect d = new DBConnect();
 
 

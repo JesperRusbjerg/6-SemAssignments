@@ -18,12 +18,17 @@ public class DataLayerImpl implements IDataLayer{
 
     Connection con;
 
-    public DataLayerImpl(boolean realDB) {
+
+    public DataLayerImpl() {
+
         DBConnect dbc = new DBConnect();
-        if(realDB){
-            dbc.setConnnectionToRealDB();
-        }
+
+        if(DBConnect.REAL_DB){
         con = dbc.getCon();
+        }else{
+            con = dbc.getTestConnection();
+        }
+
     }
 
     @Override
@@ -36,6 +41,11 @@ public class DataLayerImpl implements IDataLayer{
             List<IAccount> accs = new ArrayList<>();
             while(rs.next()){
                 Account a = new Account();
+                int bankId = rs.getInt("bank");
+
+                IBank b = getBank(bankId);
+
+                a.setBank(b);
                 a.setBalance(rs.getLong("balance"));
                 a.setNumber(rs.getString("number"));
                 accs.add(a);

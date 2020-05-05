@@ -18,18 +18,22 @@ import java.util.List;
 
 public class DatalayerTest {
 
-    private static DataLayerImpl dli = new DataLayerImpl(false);
-    private static DBSetup dbs = new DBSetup(dli.getCon());
+    private static DataLayerImpl dli;
+    private static DBSetup dbs;
 
     @BeforeClass
     public static void before() throws SQLException, IOException {
-        DBSetup dbs = new DBSetup(dli.getCon());
+        DBConnect.REAL_DB = false;
+        dli = new DataLayerImpl();
+        dbs = new DBSetup(dli.getCon());
         dbs.tearDownAndRebuildEverything();
     }
 
     @AfterClass
     public static void after() throws SQLException {
         dli.getCon().close();
+
+        DBConnect.REAL_DB = true;
     }
 
 
