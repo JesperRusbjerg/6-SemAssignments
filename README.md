@@ -1,6 +1,5 @@
 # 6-SemAssignments
-Hello reviewer, please locate the folder with the assignments name, there you will find the awesome solution.
-**Please look in JesperBankTesting**
+**Please look in JesperBankTesting for the current test assignment**
 - in src/main/java/dk/cphbusiness/rest -> you will find a simple implementation of a rest api based on bank accounts which will later be used for my frontend
 - in src/test/java/dk.cphbusiness/banking/restTest -> you will find an example of this rest API being tested
 
