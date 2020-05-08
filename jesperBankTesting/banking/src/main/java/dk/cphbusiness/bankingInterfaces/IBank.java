@@ -12,4 +12,5 @@ public interface IBank {
   String getName();
   List<IAccount> getAccounts();
   List<ICustomer> getCustomers();
+  int getId();
   }

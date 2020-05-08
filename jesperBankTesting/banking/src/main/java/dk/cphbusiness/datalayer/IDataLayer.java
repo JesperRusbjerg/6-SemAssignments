@@ -20,7 +20,11 @@ public interface IDataLayer {
     //Fetches all accounts from a given bank
     List<IAccount> getAccountsBank(int bankId);
     //Fetches all customers from a given bank
-    List<ICustomer> getCustomersFromBank(String customerNumber);
+    List<ICustomer> getCustomersFromBank(int bankId);
+    //Fetches bank with given name
+    IBank getBank(String name);
+    //Getting single account from bank
+    IAccount getAccountFromBank(String accNumber, int bankid);
 
     //Fetch customer
     //Fetch a certain customer - number is unique

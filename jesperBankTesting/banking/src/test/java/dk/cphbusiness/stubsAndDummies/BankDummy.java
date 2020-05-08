@@ -49,6 +49,11 @@ public class BankDummy implements IBank {
   }
 
   @Override
+  public int getId() {
+    return 0;
+  }
+
+  @Override
   public void setAccount(IAccount account) {
     // TODO Auto-generated method stub
 

@@ -55,5 +55,10 @@ public class BankStub implements IBank {
     return null;
   }
 
+  @Override
+  public int getId() {
+    return 0;
+  }
+
 
 }

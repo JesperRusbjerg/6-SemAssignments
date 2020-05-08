@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="dk.cphbusiness.banking.datalayerTest.DatalayerTest" time="0.832" errors="2" skipped="0">
+<testsuite tests="7" failures="0" name="dk.cphbusiness.banking.datalayerTest.DatalayerTest" time="0.101" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="13.0.2+8"/>
@@ -59,66 +59,11 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="dk.cphbusiness.banking.datalayerTest.DatalayerTest" time="0.416">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at dk.cphbusiness.banking.datalayerTest.DBSetup.resetBanksTable(DBSetup.java:47)
-	at dk.cphbusiness.banking.datalayerTest.DBSetup.tearDownAndRebuildEverything(DBSetup.java:26)
-	at dk.cphbusiness.banking.datalayerTest.DatalayerTest.before(DatalayerTest.java:29)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</error>
-    <system-out>Connecting Test database...
-SQLException: The server time zone value &apos;Rom, sommertid&apos; is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the &apos;serverTimezone&apos; configuration property) to use a more specifc time zone value if you want to utilize time zone support.
-</system-out>
-  </testcase>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="dk.cphbusiness.banking.datalayerTest.DatalayerTest" time="0.416">
-    <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at dk.cphbusiness.banking.datalayerTest.DatalayerTest.after(DatalayerTest.java:34)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.RunAfters.invokeMethod(RunAfters.java:46)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</error>
-  </testcase>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Get_Customer_from_number_DataLayer" time="0.019"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Get_Accounts_DataLayer" time="0.006"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Transaction_Account_To_Account" time="0.011"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_account_And_Get_Account_DataLayer" time="0.047"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Tables_Setup" time="0.012"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Account_Accounts_For_Bank_DataLayer" time="0.001"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_And_Fetch_Customer" time="0.005"/>
 </testsuite>

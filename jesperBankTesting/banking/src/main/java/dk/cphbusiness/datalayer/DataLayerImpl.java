@@ -123,8 +123,9 @@ public class DataLayerImpl implements IDataLayer{
 
             if(rs.next()){
 
+                int idx = rs.getInt("id");
                 String bankName = rs.getString("name");
-                Bank b = new Bank(bankName);
+                Bank b = new Bank(idx, bankName);
 
                 return b;
             }
@@ -171,10 +172,10 @@ public class DataLayerImpl implements IDataLayer{
     }
 
     @Override
-    public List<ICustomer> getCustomersFromBank(String number) {
+    public List<ICustomer> getCustomersFromBank(int id) {
         try {
             Statement state = con.createStatement();
-            String sql = "select * from customer where number='"+number+"'";
+            String sql = "select * from customer where bank= "+id ;
             ResultSet rs = state.executeQuery(sql);
 
             List<ICustomer> customers = new ArrayList<>();
@@ -185,6 +186,48 @@ public class DataLayerImpl implements IDataLayer{
                 customers.add(c);
             }
             return customers;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public IBank getBank(String name) {
+        try {
+            Statement state = con.createStatement();
+            String sql = "select * from bank where name = '"+name+"'";
+            ResultSet rs = state.executeQuery(sql);
+
+            if(rs.next()){
+                int id = rs.getInt("id");
+                String bankName = rs.getString("name");
+                Bank b = new Bank(id, bankName);
+
+                return b;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public IAccount getAccountFromBank(String accNumber, int bankid) {
+        try {
+            Statement state = con.createStatement();
+            String sql = "select * from account where bank = "+bankid+" and number = '"+accNumber+"';";
+            ResultSet rs = state.executeQuery(sql);
+
+            IAccount acc = null;
+            while(rs.next()){
+                Account a = new Account();
+                a.setBalance(rs.getLong("balance"));
+                a.setNumber(rs.getString("number"));
+                acc = a;
+            }
+            return acc;
 
         } catch (SQLException e) {
             e.printStackTrace();

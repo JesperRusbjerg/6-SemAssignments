@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
 import dk.cphbusiness.stubsAndDummies.BankDummy;
-import dk.cphbusiness.facade.BankStub;
 import dk.cphbusiness.stubsAndDummies.CustomerDummy;
 
 public class AccountTest {

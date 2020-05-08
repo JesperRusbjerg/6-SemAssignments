@@ -12,7 +12,7 @@ import dto.BankDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AccountFacade  {
+public class AccountFacade implements AccountContract{
 
     private IDataLayer data;
 
@@ -20,7 +20,7 @@ public class AccountFacade  {
     this.data = data;
     }
 
-
+    @Override
     public List<AccountDTO> getAllAccounts() {
 
     List<IAccount> accounts = data.getAccounts();
@@ -32,7 +32,7 @@ public class AccountFacade  {
 
     return accountDTOs;
     }
-
+    @Override
     public AccountDTO getAccount(String s) {
 
     IAccount a = data.getAccountONNumber(s);
@@ -43,7 +43,7 @@ public class AccountFacade  {
 
     return ac;
     }
-
+    @Override
     public AccountDTO editAccount(AccountDTO accountDTO) {
 
         IAccount acc = data.getAccountONNumber(accountDTO.getNumber());
@@ -54,12 +54,11 @@ public class AccountFacade  {
 
         return new AccountDTO(editedAccount);
     }
+    @Override
+    public void editBalance(long l, String s) {
 
-    public AccountDTO editBalance(long l, String s) {
+        data.editBalance(l, s);
 
-        IAccount a = data.editBalance(l, s);
-
-        return new AccountDTO(a);
 
     }
 }

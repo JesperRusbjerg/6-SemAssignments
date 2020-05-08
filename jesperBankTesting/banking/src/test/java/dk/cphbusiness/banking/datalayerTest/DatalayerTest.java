@@ -7,6 +7,7 @@ import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
 import dk.cphbusiness.datalayer.DBConnect;
 import dk.cphbusiness.datalayer.DataLayerImpl;
+import dto.BankDTO;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -87,7 +88,8 @@ public class DatalayerTest {
 
     @Test
     public void Test_Get_Customer_from_number_DataLayer(){
-        List<ICustomer> customers = dli.getCustomersFromBank("3dax");
+
+        List<ICustomer> customers = dli.getCustomersFromBank(2);
         Assert.assertNotNull(customers);
     }
 

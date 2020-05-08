@@ -17,5 +17,6 @@ dk\cphbusiness\app\HelloApplication.class
 dk\cphbusiness\banking\Account.class
 dk\cphbusiness\banking\Movement.class
 dk\cphbusiness\rest\Greetings.class
+dk\cphbusiness\facade\BankFacadeDummy.class
 dk\cphbusiness\facade\CustomerStub.class
 dk\cphbusiness\facade\BankStub.class

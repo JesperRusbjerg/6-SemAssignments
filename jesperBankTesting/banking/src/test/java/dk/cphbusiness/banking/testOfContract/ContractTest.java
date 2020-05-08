@@ -1,8 +1,8 @@
 package dk.cphbusiness.banking.testOfContract;
 
-import dk.cphbusiness.facade.AccountFacadeDummy;
-import dk.cphbusiness.facade.BankFacadeDummy;
-import dk.cphbusiness.facade.CustomerFacadeDummy;
+import dk.cphbusiness.datalayer.DBConnect;
+import dk.cphbusiness.datalayer.DataLayerImpl;
+import dk.cphbusiness.facade.*;
 import facadeTest.AccountFacadeTest;
 import facadeTest.BankFacadeTest;
 import facadeTest.ContractHolder;
@@ -21,9 +21,10 @@ import org.junit.runners.Suite;
     public class ContractTest {
         @BeforeClass
         public static void before(){
-            ContractHolder.accountContract = new AccountFacadeDummy();
-            ContractHolder.bankContract = new BankFacadeDummy();
-            ContractHolder.customerContract = new CustomerFacadeDummy();
+            DBConnect.REAL_DB = false;
+            ContractHolder.accountContract = new AccountFacade(new DataLayerImpl());
+            ContractHolder.bankContract = new BankFacade(new DataLayerImpl());
+            ContractHolder.customerContract = new CustomerFacade(new DataLayerImpl());
         }
 
     }

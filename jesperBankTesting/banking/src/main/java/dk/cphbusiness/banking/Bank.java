@@ -9,11 +9,19 @@ import dk.cphbusiness.bankingInterfaces.ICustomer;
 
 public class Bank implements IBank {
 
+    private int id;
     private List<IAccount> accounts;
     private List<ICustomer> customers;
     private String name;
 
     public Bank(String name) {
+        accounts = new ArrayList<IAccount>();
+        customers = new ArrayList<ICustomer>();
+        this.name = name;
+    }
+
+    public Bank(int id, String name) {
+        this.id = id;
         accounts = new ArrayList<IAccount>();
         customers = new ArrayList<ICustomer>();
         this.name = name;
@@ -79,5 +87,13 @@ public class Bank implements IBank {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

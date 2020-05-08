@@ -2,22 +2,11 @@ package dk.cphbusiness.rest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.net.httpserver.HttpServer;
-import dk.cphbusiness.banking.Account;
-import dk.cphbusiness.banking.Bank;
-import dk.cphbusiness.banking.Customer;
-import dk.cphbusiness.bankingInterfaces.IAccount;
-import dk.cphbusiness.bankingInterfaces.IBank;
-import dk.cphbusiness.datalayer.DBConnect;
 import dk.cphbusiness.datalayer.DataLayerImpl;
 import dk.cphbusiness.datalayer.IDataLayer;
 import dk.cphbusiness.facade.AccountFacade;
-import dk.cphbusiness.facade.AccountFacadeDummy;
-import dk.cphbusiness.facade.CustomerFacadeDummy;
 import dto.AccountDTO;
-import dto.BankDTO;
 import dto.CustomerDTO;
-import org.glassfish.jersey.internal.inject.Custom;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -77,7 +66,6 @@ public class Banking {
     @GET
     public Response getAllAccounts() {
         //Switch boolean to true once realDB is setup
-
 
         AccountFacade af = new AccountFacade(new DataLayerImpl());
 
