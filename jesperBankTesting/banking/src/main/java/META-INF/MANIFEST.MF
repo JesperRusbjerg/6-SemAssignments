@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: jersey-guava-2.22.1.jar jersey-container-jdk-http-2.22.1.jar
+  aopalliance-repackaged-2.4.0-b31.jar jersey-container-servlet-2.22.1.j
+ ar bankContract-1.0-SNAPSHOT.jar hk2-utils-2.4.0-b31.jar jackson-annota
+ tions-2.9.0.jar jersey-client-2.22.1.jar hk2-locator-2.4.0-b31.jar jers
+ ey-container-servlet-core-2.22.1.jar hk2-api-2.4.0-b31.jar javax.servle
+ t-api-3.0.1.jar jersey-media-jaxb-2.22.1.jar jersey-common-2.22.1.jar j
+ ersey-test-framework-core-2.22.1.jar javax.annotation-api-1.2.jar mysql
+ -connector-java-8.0.19.jar validation-api-1.1.0.Final.jar javax.ws.rs-a
+ pi-2.0.1.jar jsr311-api-1.1.1.jar javassist-3.18.1-GA.jar jersey-server
+ -2.22.1.jar osgi-resource-locator-1.0.1.jar jersey-test-framework-provi
+ der-jdk-http-2.22.1.jar jackson-core-2.9.8.jar jackson-databind-2.9.8.j
+ ar asm-debug-all-5.0.4.jar javax.inject-2.4.0-b31.jar bankContract-1.0-
+ SNAPSHOT-tests.jar protobuf-java-3.6.1.jar jersey-bundle-1.18.3.jar
+

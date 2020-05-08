@@ -20,7 +20,31 @@
         <maven.test.failure.ignore>true</maven.test.failure.ignore>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>lib_id</id>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+
+
+
     <dependencies>
+
+        <!--resteasy-->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.1.4.Final</version>
+        </dependency>
+
+        <!--unit test-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
@@ -74,7 +98,6 @@
             <version>2.9.8</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-server</artifactId>
@@ -91,9 +114,30 @@
             <version>2.22.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>BankFinalContract</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>BankFinalContract</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
 
 
 
+
+
+
+        <!--        &lt;!&ndash;rest-easy client&ndash;&gt;-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.jboss.resteasy</groupId>-->
+        <!--            <artifactId>resteasy-client</artifactId>-->
+        <!--            <version>3.1.4.Final</version>-->
+        <!--        </dependency>-->
     </dependencies>
 
 

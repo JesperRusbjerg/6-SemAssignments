@@ -4,14 +4,17 @@ import contract.BankContract;
 import dk.cphbusiness.facade.AccountStub;
 import dk.cphbusiness.facade.CustomerStub;
 import dto.AccountDTO;
+import dto.BankDTO;
 import dto.CustomerDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BankFacadeDummy implements BankContract {
+
+
     @Override
-    public List<AccountDTO> getAccounts() {
+    public List<AccountDTO> getAccounts(BankDTO bankDTO) {
         List<AccountDTO> res = new ArrayList<>();
         AccountStub a = new AccountStub();
         res.add(new AccountDTO(a));
@@ -21,7 +24,7 @@ public class BankFacadeDummy implements BankContract {
     }
 
     @Override
-    public List<CustomerDTO> getCustomers() {
+    public List<CustomerDTO> getCustomers(BankDTO bankDTO) {
         List<CustomerDTO> customers = new ArrayList<>();
         CustomerStub c = new CustomerStub();
         customers.add(new CustomerDTO(c));
@@ -31,7 +34,7 @@ public class BankFacadeDummy implements BankContract {
     }
 
     @Override
-    public AccountDTO getAccount(String s) {
+    public AccountDTO getAccount(String s, BankDTO bankDTO) {
         AccountStub a = new AccountStub();
         return new AccountDTO(a);
     }
@@ -44,11 +47,10 @@ public class BankFacadeDummy implements BankContract {
     }
 
     @Override
-    public void registerCustomer(CustomerDTO customerDTO) {
-        //Simulates a save to a DB
-        List<CustomerDTO> res = new ArrayList<>();
-        res.add(customerDTO);
+    public void registerCustomer(CustomerDTO customerDTO, BankDTO bankDTO) {
+
     }
+
 
     @Override
     public void setAccount(AccountDTO accountDTO) {
