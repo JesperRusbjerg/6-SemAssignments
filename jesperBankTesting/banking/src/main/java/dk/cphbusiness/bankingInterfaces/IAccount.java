@@ -17,6 +17,9 @@ public interface IAccount {
     public void setBalance(long balance);
     public void setNumber(String number);
 
+    public void setId(int id);
+    public int getId();
+
 
 
 }

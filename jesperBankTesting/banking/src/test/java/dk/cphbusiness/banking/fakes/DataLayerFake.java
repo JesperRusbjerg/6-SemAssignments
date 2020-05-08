@@ -1,76 +1,145 @@
 package dk.cphbusiness.banking.fakes;
 
+import dk.cphbusiness.banking.Account;
+import dk.cphbusiness.banking.Bank;
+import dk.cphbusiness.banking.Customer;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
 import dk.cphbusiness.datalayer.IDataLayer;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-// This class would be used in any scenario where you would need a fake data layer
-// E.G if you had to call your data layer in your facade class, you would use this implementation
-// So you faked having a connection to a real DB :)
 
 public class DataLayerFake implements IDataLayer {
 
+    List<IAccount> accs = new ArrayList<>();
+    ICustomer customerToEditOrFetch;
+
+    public DataLayerFake() {
+        IBank b = new Bank(1, "Danske bank");
+        customerToEditOrFetch = new Customer("xxxNum", "Peter Martinsen");
+
+        ICustomer c = new Customer("xxxNum", "Peter Martinsen");
+        ICustomer c1 = new Customer("xxxNum2", "Bjarne Martinsen");
+
+        IAccount a = new Account(b, c, "xxxAccNum", 1);
+        a.setBalance(350);
+        IAccount a1 = new Account(b, c1, "xxxAccNumXxx",2 );
+        a1.setBalance(700);
+
+        accs.add(a);
+        accs.add(a1);
+
+    }
+
     @Override
     public List<IAccount> getAccounts() {
-        return null;
+       return accs;
     }
 
     @Override
     public IAccount getAccount(int id) {
-        return null;
+       for(IAccount a: accs){
+           if(a.getId() == id){
+               return a;
+           }
+       }
+       return null;
     }
 
     @Override
     public IAccount editAccount(IAccount a) {
+        for(IAccount acc: accs){
+            if(a.getNumber().equals(acc.getNumber())){
+                acc = a;
+                return acc;
+            }
+        }
         return null;
     }
 
     @Override
     public IAccount getAccountONNumber(String number) {
+        for(IAccount acc: accs){
+            if(acc.getNumber().equals(number)){
+                return acc;
+            }
+        }
         return null;
     }
 
     @Override
     public IAccount editBalance(long amount, String accNumber) {
+        for(IAccount acc: accs){
+            if(acc.getNumber().equals(accNumber)){
+                acc.setBalance(amount);
+                return acc;
+            }
+        }
         return null;
     }
 
     @Override
     public List<IAccount> getAccountsBank(int bankId) {
-        return null;
+        List<IAccount> res = new ArrayList();
+
+        for(IAccount acc: accs){
+            if(acc.getBank().getId() == bankId){
+                res.add(acc);
+            }
+        }
+        return res;
     }
 
     @Override
     public List<ICustomer> getCustomersFromBank(int bankId) {
-        return null;
+       List<ICustomer> res = new ArrayList<>();
+       res.add(new Customer("xxxNum", "Peter Martinsen"));
+       res.add(new Customer("xxxNum2", "Bjørn Martinsen"));
+
+        return res;
     }
 
     @Override
     public IBank getBank(String name) {
-        return null;
+        return new Bank(1, "Danske bank");
     }
 
     @Override
     public IAccount getAccountFromBank(String accNumber, int bankid) {
+        for(IAccount acc: accs){
+            if(acc.getNumber().equals(accNumber) && acc.getBank().getId() == bankid){
+                return acc;
+            }
+        }
         return null;
     }
 
     @Override
     public ICustomer fetchCustmer(String number) {
-        return null;
+    return customerToEditOrFetch;
     }
 
     @Override
     public ICustomer editCustomer(ICustomer c) {
-        return null;
+        customerToEditOrFetch = c;
+        return customerToEditOrFetch;
     }
 
     @Override
     public void transaction(IAccount a, IAccount b) throws SQLException {
+
+        for(IAccount acc: accs){
+            if(a.getNumber().equals(acc.getNumber())){
+                acc.setBalance(a.getBalance());
+            }
+            if(b.getNumber().equals(acc.getNumber())){
+                acc.setBalance(b.getBalance());
+            }
+        }
 
     }
 }

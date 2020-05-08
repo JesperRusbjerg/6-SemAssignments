@@ -5,15 +5,24 @@ import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
 
 public class Account implements IAccount {
+
+  private int id;
   private IBank bank;
   private ICustomer customer;
   private String number;
   private long balance = 0;
 
+
   public Account(IBank bank, ICustomer customer, String number) {
     this.bank = bank;
     this.customer = customer;
     this.number = number;
+  }
+  public Account(IBank bank, ICustomer customer, String number, int id) {
+    this.bank = bank;
+    this.customer = customer;
+    this.number = number;
+    this.id = id;
   }
 
     public Account() {
@@ -65,5 +74,13 @@ public class Account implements IAccount {
     this.number = number;
   }
 
+  @Override
+  public int getId() {
+    return id;
+  }
 
+  @Override
+  public void setId(int id) {
+    this.id = id;
+  }
 }

@@ -60,7 +60,15 @@ public class AccountDummy implements IAccount {
 
     }
 
+    @Override
+    public void setId(int id) {
 
+    }
+
+    @Override
+    public int getId() {
+        return 0;
+    }
 
 
 }

@@ -48,7 +48,6 @@ public class AccountFacade implements AccountContract{
 
         IAccount acc = data.getAccountONNumber(accountDTO.getNumber());
         acc.setBalance(accountDTO.getBalance());
-        acc.setNumber(accountDTO.getNumber());
 
         IAccount editedAccount = data.editAccount(acc);
 
@@ -58,7 +57,6 @@ public class AccountFacade implements AccountContract{
     public void editBalance(long l, String s) {
 
         data.editBalance(l, s);
-
 
     }
 }

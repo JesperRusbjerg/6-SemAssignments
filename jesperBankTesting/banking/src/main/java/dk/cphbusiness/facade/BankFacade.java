@@ -25,6 +25,7 @@ public class BankFacade implements BankContract {
     public List<AccountDTO> getAccounts(BankDTO bankDTO) {
 
     IBank b = data.getBank(bankDTO.getName());
+
     List<IAccount> accs = data.getAccountsBank(b.getId());
     List<AccountDTO> dtoList = new ArrayList<>();
     for(IAccount a: accs){
