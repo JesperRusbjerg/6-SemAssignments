@@ -10,5 +10,4 @@ dk\cphbusiness\banking\datalayerTest\DatalayerTest.class
 dk\cphbusiness\banking\restTest\BankingRestTest$1.class
 dk\cphbusiness\stubsAndDummies\BankDummy.class
 dk\cphbusiness\banking\testOfContract\ContractTest.class
-dk\cphbusiness\banking\fakes\DataLayerFake.class
 dk\cphbusiness\banking\restTest\BankingRestTest.class
