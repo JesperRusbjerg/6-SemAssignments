@@ -11,7 +11,7 @@ import dk.cphbusiness.stubsAndDummies.CustomerDummy;
 public class CustomerTest {
 
   @Test
-  public void testCreateAccount() throws Exception {
+  public void Test_CreateAccount_Account() throws Exception {
     ICustomer ic = new Customer("11111", "bente madsen");
 
 

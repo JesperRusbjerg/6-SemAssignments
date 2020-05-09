@@ -65,7 +65,7 @@ public class Bank implements IBank {
 
     @Override
     public String getName() {
-        return "Bank of awesomeSauce";
+        return this.name;
     }
 
     @Override

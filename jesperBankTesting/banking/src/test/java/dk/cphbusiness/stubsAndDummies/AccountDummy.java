@@ -1,10 +1,17 @@
 package dk.cphbusiness.stubsAndDummies;
 
+import dk.cphbusiness.banking.Movement;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
+import dk.cphbusiness.bankingInterfaces.IMovement;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDummy implements IAccount {
+
+    List<IMovement> movements = new ArrayList();
 
     private String number; 
     public AccountDummy(String number){
@@ -68,6 +75,21 @@ public class AccountDummy implements IAccount {
     @Override
     public int getId() {
         return 0;
+    }
+
+    @Override
+    public List<IMovement> movementHistory() {
+        return movements;
+    }
+
+    @Override
+    public void setMovementHistory(List<IMovement> movements) {
+
+    }
+
+    @Override
+    public void addToMovementHistory(IMovement movement) {
+            this.movements.add(movement);
     }
 
 

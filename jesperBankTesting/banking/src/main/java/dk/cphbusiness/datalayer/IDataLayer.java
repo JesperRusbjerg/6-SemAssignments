@@ -1,8 +1,10 @@
 package dk.cphbusiness.datalayer;
 
+import dk.cphbusiness.banking.Movement;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
+import dk.cphbusiness.bankingInterfaces.IMovement;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,7 +15,7 @@ public interface IDataLayer {
     List<IAccount> getAccounts();
     IAccount getAccount(int id);
     IAccount editAccount(IAccount a);
-    IAccount getAccountONNumber(String number);
+    IAccount getAccountAndHistroyOnNumber(String number);
     IAccount editBalance(long amount, String accNumber);
 
     //Fetching for bank
@@ -33,5 +35,6 @@ public interface IDataLayer {
     ICustomer editCustomer (ICustomer c);
 
     //Movement
-    void transaction(IAccount a, IAccount b) throws SQLException;
+    List<IAccount> transaction(IAccount a, IAccount b, long amount,  long date) throws SQLException;
+    List<IMovement> movementsFromAccount(int id, String Number);
 }

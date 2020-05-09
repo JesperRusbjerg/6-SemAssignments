@@ -24,8 +24,9 @@ public class DBSetup {
     public void tearDownAndRebuildEverything() {
 
        resetBanksTable();
-        resetAccountTable();
+       resetAccountTable();
        resetCustomerTable();
+      resetMovementTable();
 
     }
 
@@ -77,6 +78,40 @@ public class DBSetup {
 
 
 
+    }
+
+    public void resetMovementTable(){
+        try {
+            Statement state = con.createStatement();
+
+            List<String> commands = new ArrayList();
+            commands.add("SET FOREIGN_KEY_CHECKS = 0;");
+
+            commands.add("drop table if exists movement;");
+
+            commands.add("CREATE TABLE movement (\n" +
+                    "    id        INT PRIMARY KEY AUTO_INCREMENT,\n" +
+                    "    source int,\n" +
+                    "    dest int,\n" +
+                    "    amount int,\n" +
+                    "    date bigint\n" +
+
+                    "  );");
+
+
+
+
+
+            commands.add(" SET FOREIGN_KEY_CHECKS = 1;");
+
+
+            for (String s : commands) {
+                state.execute(s);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void resetAccountTable() {
@@ -154,6 +189,7 @@ public class DBSetup {
 
     public static void main(String[] args) {
         DBConnect db = new DBConnect();
+        DBConnect.REAL_DB = false;
         DBSetup dbs = new DBSetup(db.getCon());
         dbs.tearDownAndRebuildEverything();
     }

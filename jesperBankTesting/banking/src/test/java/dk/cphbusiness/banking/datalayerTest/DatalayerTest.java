@@ -115,7 +115,7 @@ public class DatalayerTest {
 
         from.transfer(amountToTransfer, to);
 
-        dli.transaction(from, to);
+        dli.transaction(from, to, 20, 2313);
 
         IAccount fromEdited = dli.getAccount(1);
         IAccount toEdited = dli.getAccount(2);

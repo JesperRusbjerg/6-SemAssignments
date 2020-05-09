@@ -1,5 +1,7 @@
 package dk.cphbusiness.bankingInterfaces;
 
+import java.util.List;
+
 public interface IAccount {
 
     public IBank getBank();
@@ -19,6 +21,12 @@ public interface IAccount {
 
     public void setId(int id);
     public int getId();
+
+    public List<IMovement> movementHistory();
+
+    public void setMovementHistory(List<IMovement> movements);
+
+    public void addToMovementHistory(IMovement movement);
 
 
 

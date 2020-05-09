@@ -3,10 +3,13 @@ dk\cphbusiness\banking\Customer.class
 dk\cphbusiness\datalayer\IDataLayer.class
 dk\cphbusiness\bankingInterfaces\ICustomer.class
 dk\cphbusiness\datalayer\DataLayerImpl.class
+dk\cphbusiness\bankingInterfaces\IMovement.class
 dk\cphbusiness\rest\Banking.class
-dk\cphbusiness\banking\MovementHistory.class
+dk\cphbusiness\Utils.class
 dk\cphbusiness\bankingInterfaces\IAccount.class
+dk\cphbusiness\facade\BankFacade.class
 dk\cphbusiness\facade\AccountFacade.class
+dk\cphbusiness\facade\CustomerFacade.class
 dk\cphbusiness\bankingInterfaces\IBank.class
 dk\cphbusiness\banking\Bank.class
 dk\cphbusiness\datalayer\DBConnect.class

@@ -74,39 +74,26 @@ public class Banking {
     public Response transferMoney(@PathParam("accFrom") final String accFrom,
                                   @PathParam("accTo") final String accTo,
                                   @PathParam("amount") final int amount) {
-        //Switch boolean to true once realDB is setup
 
         IDataLayer d = new DataLayerImpl();
-
-        Account a1 = (Account) d.getAccountONNumber(accFrom);
-
-        Account a2 = (Account) d.getAccountONNumber(accTo);
+        AccountFacade f = new AccountFacade(d);
 
         try {
-            a1.transfer(amount, a2);
-        } catch (Exception e) {
-            //Goes here if insufficient funds!
-        }
-
-        try {
-            d.transaction(a1, a2);
-
-            List<AccountDTO> adto = new ArrayList<>();
-            adto.add(new AccountDTO(a1));
-            adto.add(new AccountDTO(a2));
+            List<AccountDTO> Dtos = f.transaction(accFrom, accTo, amount);
             ObjectMapper mapper = new ObjectMapper();
             //Converting the Object to JSONString
             String jsonString = "";
             try {
-                jsonString = mapper.writeValueAsString(adto);
+                jsonString = mapper.writeValueAsString(Dtos);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
             return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
+        } catch (Exception e) {
+            //RETURN ERROR HERE IF NOT POSSIBLE
 
-        } catch (SQLException throwables) {
-            //GOes here if SQL fails
         }
+
         return null;
 
     }

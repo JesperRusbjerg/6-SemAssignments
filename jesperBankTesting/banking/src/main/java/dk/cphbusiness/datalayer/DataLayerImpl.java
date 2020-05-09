@@ -1,17 +1,21 @@
 package dk.cphbusiness.datalayer;
 
+import dk.cphbusiness.Utils;
 import dk.cphbusiness.banking.Account;
 import dk.cphbusiness.banking.Bank;
 import dk.cphbusiness.banking.Customer;
+import dk.cphbusiness.banking.Movement;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
+import dk.cphbusiness.bankingInterfaces.IMovement;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DataLayerImpl implements IDataLayer{
@@ -91,7 +95,7 @@ public class DataLayerImpl implements IDataLayer{
     }
 
     @Override
-    public IAccount getAccountONNumber(String number) {
+    public IAccount getAccountAndHistroyOnNumber(String number) {
         try {
             Statement state = con.createStatement();
             String sql = "select * from account where number =" + number;
@@ -101,10 +105,17 @@ public class DataLayerImpl implements IDataLayer{
                 Account a = new Account();
 
                 int bankId = rs.getInt("bank");
-
                 IBank b = getBank(bankId);
+                int accId = rs.getInt("id");
+
+                List<IMovement> movements = movementsFromAccount(accId, number);
+
+                a.setMovementHistory(movements);
+
+
 
                 a.setBank(b);
+                a.setId(accId);
                 a.setBalance(rs.getLong("balance"));
                 a.setNumber(rs.getString("number"));
                 return a;
@@ -114,6 +125,46 @@ public class DataLayerImpl implements IDataLayer{
         }
         return null;
     }
+
+    @Override
+    public List<IMovement> movementsFromAccount(int id, String accNumber) {
+
+        try {
+            Statement state = con.createStatement();
+            String sql = "select * from movement where source =" + id + " or dest = " + id;
+            ResultSet rs = state.executeQuery(sql);
+
+            List<IMovement> movements = new ArrayList<>();
+            while(rs.next()){
+
+                String sourceNumber = accNumber;
+                String destNumber;
+
+                //If our account wasnt the one who made the transfer, but recived it
+                int source = rs.getInt("source");
+                int dest = rs.getInt("dest");
+                long amount = rs.getLong("amount");
+                long date = rs.getLong("date");
+
+
+                if(source != id){
+                    IAccount sourceAcc = getAccount(source);
+                    sourceNumber = sourceAcc.getNumber();
+                    destNumber = accNumber;
+                }else{
+                    IAccount destAcc = getAccount(dest);
+                    destNumber = destAcc.getNumber();
+                }
+                movements.add(new Movement(sourceNumber, destNumber, amount, date));
+            }
+            return movements;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 
     public IBank getBank(int id){
         try {
@@ -268,7 +319,8 @@ public class DataLayerImpl implements IDataLayer{
     }
 
     @Override
-    public void transaction(IAccount from, IAccount to) throws SQLException {
+    public List<IAccount> transaction(IAccount from, IAccount to, long amount, long date) throws SQLException {
+
             try
             {
                 con.setAutoCommit(false);
@@ -281,15 +333,29 @@ public class DataLayerImpl implements IDataLayer{
                 sql = "UPDATE account set balance ='"+(to.getBalance())+"' where number ='"+to.getNumber()+"'";
                 state.executeUpdate(sql);
 
+                sql = "INSERT INTO movement (source, dest, amount, date) VALUES ("+from.getId()+","+to.getId()+","+amount+","+date+");";
+                state.executeUpdate(sql);
+
                 con.commit();
                 con.setAutoCommit(true);
+
+                Movement m = new Movement(from.getNumber(), to.getNumber(), amount, date);
+                from.addToMovementHistory(m);
+                to.addToMovementHistory(m);
+                List<IAccount> res = new ArrayList<>();
+                res.add(from);
+                res.add(to);
+                    return res;
             }
             catch(Exception e)
             {
                 con.rollback();
             }
 
+return null;
         }
+
+
 
     public Connection getCon() {
         return con;

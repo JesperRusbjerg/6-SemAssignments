@@ -47,8 +47,10 @@ public class DBConnect {
 
     public Connection getCon() {
         if (con != null) return con;
+        if(REAL_DB) getConnection();
+        return getTestConnection();
+
         // get db, user, pass from settings file
-        return getConnection();
     }
 
     public static void main(String[] args){

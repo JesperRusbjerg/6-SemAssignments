@@ -3,6 +3,11 @@ package dk.cphbusiness.banking;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
+import dk.cphbusiness.bankingInterfaces.IMovement;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Account implements IAccount {
 
@@ -11,18 +16,21 @@ public class Account implements IAccount {
   private ICustomer customer;
   private String number;
   private long balance = 0;
+  private List<IMovement> movements = new ArrayList<>();
 
 
   public Account(IBank bank, ICustomer customer, String number) {
     this.bank = bank;
     this.customer = customer;
     this.number = number;
+    this.movements = new ArrayList<>();
   }
   public Account(IBank bank, ICustomer customer, String number, int id) {
     this.bank = bank;
     this.customer = customer;
     this.number = number;
     this.id = id;
+    this.movements = new ArrayList<>();
   }
 
     public Account() {
@@ -52,6 +60,10 @@ public class Account implements IAccount {
     Account ac = (Account) target;
     ac.balance += amount;
 
+    //Movements being added to both accounts if a transaction is valid
+    movements.add(new Movement(this.number, target.getNumber(), amount, new Date().getTime()));
+    target.movementHistory().add(new Movement(this.number, target.getNumber(), amount, new Date().getTime()));
+
     }
 
   @Override
@@ -77,6 +89,21 @@ public class Account implements IAccount {
   @Override
   public int getId() {
     return id;
+  }
+
+  @Override
+  public List<IMovement> movementHistory() {
+    return movements;
+  }
+
+  @Override
+  public void setMovementHistory(List<IMovement> movements) {
+    this.movements = movements;
+  }
+
+  @Override
+  public void addToMovementHistory(IMovement movement) {
+    this.movements.add(movement);
   }
 
   @Override

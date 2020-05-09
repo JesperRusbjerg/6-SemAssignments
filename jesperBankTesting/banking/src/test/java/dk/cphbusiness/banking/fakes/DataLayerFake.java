@@ -1,11 +1,14 @@
 package dk.cphbusiness.banking.fakes;
 
+import dk.cphbusiness.Utils;
 import dk.cphbusiness.banking.Account;
 import dk.cphbusiness.banking.Bank;
 import dk.cphbusiness.banking.Customer;
+import dk.cphbusiness.banking.Movement;
 import dk.cphbusiness.bankingInterfaces.IAccount;
 import dk.cphbusiness.bankingInterfaces.IBank;
 import dk.cphbusiness.bankingInterfaces.ICustomer;
+import dk.cphbusiness.bankingInterfaces.IMovement;
 import dk.cphbusiness.datalayer.IDataLayer;
 
 import java.sql.SQLException;
@@ -62,7 +65,7 @@ public class DataLayerFake implements IDataLayer {
     }
 
     @Override
-    public IAccount getAccountONNumber(String number) {
+    public IAccount getAccountAndHistroyOnNumber(String number) {
         for(IAccount acc: accs){
             if(acc.getNumber().equals(number)){
                 return acc;
@@ -130,16 +133,35 @@ public class DataLayerFake implements IDataLayer {
     }
 
     @Override
-    public void transaction(IAccount a, IAccount b) throws SQLException {
+    public List<IAccount> transaction(IAccount a, IAccount b, long amount, long date) throws SQLException {
+
+        List<IAccount> accs = new ArrayList<>();
 
         for(IAccount acc: accs){
             if(a.getNumber().equals(acc.getNumber())){
-                acc.setBalance(a.getBalance());
+                acc.setBalance(acc.getBalance()-amount);
+                acc.addToMovementHistory(new Movement(a.getNumber(), b.getNumber(), amount, date));
+                accs.add(acc);
             }
+
             if(b.getNumber().equals(acc.getNumber())){
-                acc.setBalance(b.getBalance());
+                acc.setBalance(acc.getBalance()+amount);
+                acc.addToMovementHistory(new Movement(a.getNumber(), b.getNumber(), amount, date));
+                accs.add(acc);
             }
         }
-
+        return accs;
     }
+
+    @Override
+    public List<IMovement> movementsFromAccount(int id, String Number) {
+        for(IAccount acc: accs){
+            if(acc.getNumber() == Number){
+                return acc.movementHistory();
+            }
+        }
+        return null;
+    }
+
+
 }
