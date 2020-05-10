@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="dk.cphbusiness.banking.datalayerTest.DatalayerTest" time="0.119" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="dk.cphbusiness.banking.datalayerTest.DatalayerTest" time="0.111" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="13.0.2+8"/>
@@ -59,11 +59,11 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Get_Customer_from_number_DataLayer" time="0.021"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Get_Customer_from_number_DataLayer" time="0.02"/>
   <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Get_Accounts_DataLayer" time="0.003"/>
   <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Transaction_Account_To_Account" time="0.023"/>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_account_And_Get_Account_DataLayer" time="0.051"/>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Tables_Setup" time="0.015"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_account_And_Get_Account_DataLayer" time="0.048"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Tables_Setup" time="0.012"/>
   <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Account_Accounts_For_Bank_DataLayer" time="0.001"/>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_And_Fetch_Customer" time="0.005"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_And_Fetch_Customer" time="0.004"/>
 </testsuite>

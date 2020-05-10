@@ -10,6 +10,7 @@ import dto.AccountDTO;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -63,9 +64,10 @@ public class AccountFacadeMockTest {
         when(dli.getAccountAndHistroyOnNumber("x2")).thenReturn(a);
         AccountFacade af = new AccountFacade(dli);
 
-        Assert.assertThrows(Exception.class, () -> {
-            af.transaction("xx", "x2", 400);
-        });
+
+        Assertions.assertThrows(Exception.class,
+                () -> {af.transaction("xx", "x2", 400);} );
+
 
         verify(dli, times(0)).transaction(null, null, 400, 292);
 

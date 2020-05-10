@@ -13,6 +13,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -35,8 +36,7 @@ public class AccountFacadeTest {
 
     @BeforeClass
     public static void before() throws SQLException, IOException {
-        dli = new DataLayerFake();
-        af = new AccountFacade(dli);
+
     }
 
     @AfterClass
@@ -52,12 +52,16 @@ public class AccountFacadeTest {
 
     @Test
     public void Test_getAccount_AccountFacade(){
+        dli = new DataLayerFake();
+        af = new AccountFacade(dli);
 
         AccountDTO a = af.getAccount("xxxAccNum");
         Assert.assertEquals(a.getBalance(), 350);
     }
     @Test
     public void Test_editedAccount_AccountFacade(){
+        dli = new DataLayerFake();
+        af = new AccountFacade(dli);
 
         long amountToEdit = 400;
         AccountDTO a = af.getAccount("xxxAccNum");
@@ -73,6 +77,8 @@ public class AccountFacadeTest {
 
     @Test
     public void Test_editBalance_AccountFacade(){
+        dli = new DataLayerFake();
+        af = new AccountFacade(dli);
         af.editBalance(300, "xxxAccNum");
         AccountDTO a = af.getAccount("xxxAccNum");
 
@@ -82,6 +88,8 @@ public class AccountFacadeTest {
 
     @Test
     public void Test_TransactionTransfer_AccountFacade() throws Exception {
+        dli = new DataLayerFake();
+        af = new AccountFacade(dli);
         List<AccountDTO> dtos = af.transaction("xxxAccNum", "xxxAccNumXxx", 20);
         Assert.assertEquals(dtos.get(0).getBalance(), 330);
         Assert.assertEquals(dtos.get(1).getBalance(), 720);
@@ -90,10 +98,12 @@ public class AccountFacadeTest {
 
     @Test
     public void Test_TransactionExceptionAndSpyNonMock_AccountFacade() throws Exception {
+        dli = new DataLayerFake();
+        af = new AccountFacade(dli);
         //Will throw exception because xxxAccNumbbb dosent exist
-        Assert.assertThrows(Exception.class, () -> {
-            af.transaction("xxxAccNumbbbb", "xxxAccNumXxx", 20);
-        });
+
+        Assertions.assertThrows(Exception.class,
+                () -> {af.transaction("xxxAccNumbbbbx", "xxxAccNumXxx", 20);} );
 
         // cant verify here though, as i dont have a spy, like i do in a mock framework!
         //verify(dli, times(0)).transaction(null, null, 400, 292);

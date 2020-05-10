@@ -30,6 +30,8 @@ class App  extends React.Component{
 
     return (
       <div>
+        <h1>Velkommen til den store bank!</h1>
+        <h1>Her kan du altid transfer penge!</h1>
     <form onSubmit={this.handleSubmit}>
     <label>
       Account 1:
@@ -43,8 +45,8 @@ class App  extends React.Component{
       <input type="text" name="acc2"  defaultValue={'3332'} value={this.state.value} onChange={this.handleChange} />
     </label>
   </form>
-  <input type="submit" value="Submit" onClick={this.handleSubmit}/>
-   
+  <input type="submit" value="Submit" id="submitAcc" onClick={this.handleSubmit}/>
+  
   <DisplayAccounts
     acc1={this.state.acc1Found}
     acc2={this.state.acc2Found}
@@ -61,7 +63,7 @@ function DisplayAccounts(props){
   if(props.acc1 == null || props.acc2 == null) return <div></div>
 
   return(
-<div>
+<div id="accDisplayed">
   <p>{props.acc1.balance}</p>
   <p>{props.acc2.balance}</p>
   </div>
