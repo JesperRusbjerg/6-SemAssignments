@@ -1,5 +1,6 @@
 package dk.cphbusiness.banking.facadeTest;
 
+import dk.cphbusiness.banking.Account;
 import dk.cphbusiness.banking.datalayerTest.DBSetup;
 import dk.cphbusiness.banking.fakes.DataLayerFake;
 import dk.cphbusiness.bankingInterfaces.IAccount;
@@ -16,6 +17,10 @@ import org.junit.Test;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 
 public class AccountFacadeTest {
 
@@ -72,6 +77,27 @@ public class AccountFacadeTest {
         AccountDTO a = af.getAccount("xxxAccNum");
 
         Assert.assertEquals(a.getBalance(), 300);
+
+    }
+
+    @Test
+    public void Test_TransactionTransfer_AccountFacade() throws Exception {
+        List<AccountDTO> dtos = af.transaction("xxxAccNum", "xxxAccNumXxx", 20);
+        Assert.assertEquals(dtos.get(0).getBalance(), 330);
+        Assert.assertEquals(dtos.get(1).getBalance(), 720);
+
+    }
+
+    @Test
+    public void Test_TransactionExceptionAndSpyNonMock_AccountFacade() throws Exception {
+        //Will throw exception because xxxAccNumbbb dosent exist
+        Assert.assertThrows(Exception.class, () -> {
+            af.transaction("xxxAccNumbbbb", "xxxAccNumXxx", 20);
+        });
+
+        // cant verify here though, as i dont have a spy, like i do in a mock framework!
+        //verify(dli, times(0)).transaction(null, null, 400, 292);
+
 
     }
 

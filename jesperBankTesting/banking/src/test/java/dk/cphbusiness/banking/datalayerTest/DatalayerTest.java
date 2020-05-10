@@ -24,7 +24,7 @@ public class DatalayerTest {
 
     @BeforeClass
     public static void before() throws SQLException, IOException {
-        DBConnect.REAL_DB = false;
+        DBConnect.REAL_DB = true;
         dli = new DataLayerImpl();
         dbs = new DBSetup(dli.getCon());
         dbs.tearDownAndRebuildEverything();

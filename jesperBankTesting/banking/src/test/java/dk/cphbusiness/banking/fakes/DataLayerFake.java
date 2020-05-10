@@ -135,19 +135,19 @@ public class DataLayerFake implements IDataLayer {
     @Override
     public List<IAccount> transaction(IAccount a, IAccount b, long amount, long date) throws SQLException {
 
-        List<IAccount> accs = new ArrayList<>();
+        List<IAccount> accounts = new ArrayList<>();
 
         for(IAccount acc: accs){
             if(a.getNumber().equals(acc.getNumber())){
-                acc.setBalance(acc.getBalance()-amount);
+                //Would normally persist to DB here too, but no need when its saved locally only
                 acc.addToMovementHistory(new Movement(a.getNumber(), b.getNumber(), amount, date));
-                accs.add(acc);
+                accounts.add(acc);
             }
 
             if(b.getNumber().equals(acc.getNumber())){
-                acc.setBalance(acc.getBalance()+amount);
+                //Would normally persist to DB here too, but no need when its saved locally only
                 acc.addToMovementHistory(new Movement(a.getNumber(), b.getNumber(), amount, date));
-                accs.add(acc);
+                accounts.add(acc);
             }
         }
         return accs;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="dk.cphbusiness.banking.datalayerTest.DatalayerTest" time="0.138" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="dk.cphbusiness.banking.datalayerTest.DatalayerTest" time="0.119" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="13.0.2+8"/>
@@ -28,7 +28,7 @@
     <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.1\plugins\maven\lib\maven-event-listener.jar"/>
     <property name="classworlds.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.1\plugins\maven\lib\maven3\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-13.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Users\Jesper\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.1\bin;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-13.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python38\Scripts\;C:\Python38\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\Jesper\AppData\Local\Microsoft\WindowsApps;;C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.1\bin;;C:\Users\Jesper\AppData\Roaming\npm;C:\Users\Jesper\AppData\Local\Programs\Microsoft VS Code\bin;."/>
     <property name="maven.conf" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.1.1\plugins\maven\lib\maven3/conf"/>
     <property name="jdk.debug" value="release"/>
     <property name="java.class.version" value="57.0"/>
@@ -59,11 +59,11 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Get_Customer_from_number_DataLayer" time="0.022"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Get_Customer_from_number_DataLayer" time="0.021"/>
   <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Get_Accounts_DataLayer" time="0.003"/>
   <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Transaction_Account_To_Account" time="0.023"/>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_account_And_Get_Account_DataLayer" time="0.06"/>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Tables_Setup" time="0.018"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_account_And_Get_Account_DataLayer" time="0.051"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Tables_Setup" time="0.015"/>
   <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Account_Accounts_For_Bank_DataLayer" time="0.001"/>
-  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_And_Fetch_Customer" time="0.011"/>
+  <testcase classname="dk.cphbusiness.banking.datalayerTest.DatalayerTest" name="Test_Edit_And_Fetch_Customer" time="0.005"/>
 </testsuite>

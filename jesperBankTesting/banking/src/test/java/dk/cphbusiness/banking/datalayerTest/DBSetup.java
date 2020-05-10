@@ -1,5 +1,6 @@
 package dk.cphbusiness.banking.datalayerTest;
 
+import dk.cphbusiness.Utils;
 import dk.cphbusiness.datalayer.DBConnect;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
@@ -189,7 +190,7 @@ public class DBSetup {
 
     public static void main(String[] args) {
         DBConnect db = new DBConnect();
-        DBConnect.REAL_DB = false;
+        DBConnect.REAL_DB = true;
         DBSetup dbs = new DBSetup(db.getCon());
         dbs.tearDownAndRebuildEverything();
     }

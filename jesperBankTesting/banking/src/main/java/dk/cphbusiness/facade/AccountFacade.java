@@ -72,13 +72,16 @@ public class AccountFacade implements AccountContract{
     IAccount source = data.getAccountAndHistroyOnNumber(accNum1);
     IAccount dest = data.getAccountAndHistroyOnNumber(accNum2);
 
+    if(source == null || dest == null){
+        throw new Exception("No account found, cant make transaction");
+    }
+
     source.transfer(amount, dest);
 
    List<IAccount> accs = data.transaction(source, dest, amount, Utils.getEpochTime());
 
    List<AccountDTO> accDtos = new ArrayList<>();
    for(IAccount a: accs){
-       AccountDTO ax = new AccountDTO(a);
 
         accDtos.add(new AccountDTO(a));
     }

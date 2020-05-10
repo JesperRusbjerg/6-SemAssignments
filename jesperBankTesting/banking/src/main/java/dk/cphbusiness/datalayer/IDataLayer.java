@@ -18,6 +18,9 @@ public interface IDataLayer {
     IAccount getAccountAndHistroyOnNumber(String number);
     IAccount editBalance(long amount, String accNumber);
 
+
+
+
     //Fetching for bank
     //Fetches all accounts from a given bank
     List<IAccount> getAccountsBank(int bankId);
