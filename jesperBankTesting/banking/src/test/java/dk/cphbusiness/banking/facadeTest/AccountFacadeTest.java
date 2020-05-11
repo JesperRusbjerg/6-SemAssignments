@@ -51,7 +51,7 @@ public class AccountFacadeTest {
     }
 
     @Test
-    public void Test_getAccount_AccountFacade(){
+    public void Test_getAccount_AccountFacade() throws Exception{
         dli = new DataLayerFake();
         af = new AccountFacade(dli);
 
@@ -59,7 +59,7 @@ public class AccountFacadeTest {
         Assert.assertEquals(a.getBalance(), 350);
     }
     @Test
-    public void Test_editedAccount_AccountFacade(){
+    public void Test_editedAccount_AccountFacade() throws Exception{
         dli = new DataLayerFake();
         af = new AccountFacade(dli);
 
@@ -76,7 +76,7 @@ public class AccountFacadeTest {
     }
 
     @Test
-    public void Test_editBalance_AccountFacade(){
+    public void Test_editBalance_AccountFacade() throws Exception{
         dli = new DataLayerFake();
         af = new AccountFacade(dli);
         af.editBalance(300, "xxxAccNum");

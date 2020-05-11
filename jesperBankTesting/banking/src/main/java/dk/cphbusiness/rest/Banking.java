@@ -9,6 +9,7 @@ import dk.cphbusiness.datalayer.IDataLayer;
 import dk.cphbusiness.facade.AccountFacade;
 import dto.AccountDTO;
 import dto.CustomerDTO;
+import org.json.JSONObject;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -26,21 +27,29 @@ public class Banking {
     }
 
 
-
     @Path("/account/{number}")
     @GET
     public Response getAccountFromNumber(@PathParam("number") final String number) {
         //Switch boolean to true once realDB is setup
-
+        ObjectMapper mapper = new ObjectMapper();
         IDataLayer d = new DataLayerImpl();
+        String jsonString = "";
 
         AccountFacade af = new AccountFacade(d);
 
-        AccountDTO adto = af.getAccount(number);
+        AccountDTO adto;
+        try {
+            adto = af.getAccount(number);
+        } catch (Exception e) {
+            JSONObject json = new JSONObject();
+            json.put("message", e.getMessage());
 
-        ObjectMapper mapper = new ObjectMapper();
+            return Response.status(404).entity(json.toString()).type(MediaType.APPLICATION_JSON).build();
+        }
+
+
         //Converting the Object to JSONString
-        String jsonString = "";
+
         try {
             jsonString = mapper.writeValueAsString(adto);
         } catch (JsonProcessingException e) {
@@ -74,28 +83,27 @@ public class Banking {
     public Response transferMoney(@PathParam("accFrom") final String accFrom,
                                   @PathParam("accTo") final String accTo,
                                   @PathParam("amount") final int amount) {
-
+        ObjectMapper mapper = new ObjectMapper();
+        //Converting the Object to JSONString
+        String jsonString = "";
         IDataLayer d = new DataLayerImpl();
         AccountFacade f = new AccountFacade(d);
 
+        List<AccountDTO> Dtos;
         try {
-            List<AccountDTO> Dtos = f.transaction(accFrom, accTo, amount);
-            ObjectMapper mapper = new ObjectMapper();
-            //Converting the Object to JSONString
-            String jsonString = "";
-            try {
-                jsonString = mapper.writeValueAsString(Dtos);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-            return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
+            Dtos = f.transaction(accFrom, accTo, amount);
         } catch (Exception e) {
-            //RETURN ERROR HERE IF NOT POSSIBLE
-
+            JSONObject json = new JSONObject();
+            json.put("message", e.getMessage());
+            return Response.status(404).entity(json.toString()).type(MediaType.APPLICATION_JSON).build();
         }
 
-        return null;
-
+        try {
+            jsonString = mapper.writeValueAsString(Dtos);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return Response.ok(jsonString, MediaType.APPLICATION_JSON).build();
     }
 
 

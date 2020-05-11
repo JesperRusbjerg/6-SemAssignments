@@ -39,10 +39,9 @@ public class AccountFacade implements AccountContract{
     return accountDTOs;
     }
     @Override
-    public AccountDTO getAccount(String s) {
+    public AccountDTO getAccount(String s) throws Exception{
 
     IAccount a = data.getAccountAndHistroyOnNumber(s);
-
 
         AccountDTO ac = new AccountDTO(a);
 
@@ -50,7 +49,7 @@ public class AccountFacade implements AccountContract{
     return ac;
     }
     @Override
-    public AccountDTO editAccount(AccountDTO accountDTO) {
+    public AccountDTO editAccount(AccountDTO accountDTO) throws Exception{
 
         IAccount acc = data.getAccountAndHistroyOnNumber(accountDTO.getNumber());
         acc.setBalance(accountDTO.getBalance());
@@ -71,10 +70,6 @@ public class AccountFacade implements AccountContract{
 
     IAccount source = data.getAccountAndHistroyOnNumber(accNum1);
     IAccount dest = data.getAccountAndHistroyOnNumber(accNum2);
-
-    if(source == null || dest == null){
-        throw new Exception("No account found, cant make transaction");
-    }
 
     source.transfer(amount, dest);
 

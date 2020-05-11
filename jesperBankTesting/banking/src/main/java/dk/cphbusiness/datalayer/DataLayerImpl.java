@@ -95,7 +95,7 @@ public class DataLayerImpl implements IDataLayer{
     }
 
     @Override
-    public IAccount getAccountAndHistroyOnNumber(String number) {
+    public IAccount getAccountAndHistroyOnNumber(String number) throws Exception {
         try {
             Statement state = con.createStatement();
             String sql = "select * from account where number =" + number;
@@ -121,9 +121,9 @@ public class DataLayerImpl implements IDataLayer{
                 return a;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new Exception("Could not find given account");
         }
-        return null;
+        throw new Exception("Could not find given account");
     }
 
     @Override

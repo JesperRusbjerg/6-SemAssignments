@@ -15,7 +15,7 @@ public interface IDataLayer {
     List<IAccount> getAccounts();
     IAccount getAccount(int id);
     IAccount editAccount(IAccount a);
-    IAccount getAccountAndHistroyOnNumber(String number);
+    IAccount getAccountAndHistroyOnNumber(String number) throws Exception;
     IAccount editBalance(long amount, String accNumber);
 
 
