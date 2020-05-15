@@ -6,35 +6,29 @@ import java.util.List;
 public class Trie {
 
     TrieNode root = new TrieNode();
+    Integer insertCounter = 0;
 
-    List<Pair> stringsFound = new ArrayList();
+    public Trie() {
+    }
 
-    // Used while dev to see what keys failed
-    List<String> errors = new ArrayList();
-
-    String[] shakespear;
-
-    public Trie(String[] ss) {
-        this.shakespear = ss;
-
-        for (int i = 0; i < this.shakespear.length; i++) {
-            insert(this.shakespear[i]);
+    public TrieNode CreateTrie(String[] ss){
+        for (int i = 0; i < ss.length; i++) {
+            insert(ss[i]);
         }
 
-        findAll(root);
+        return getRoot();
+    }
 
-        // for (Pair pair : stringsFound) {
-        // System.out.println(pair);
-
-        // }
+    public void printTrieInOrder(){
+        List<Pair> pairs = findAll(getRoot(), null);
+        for(Pair p: pairs){
+            System.out.println(p);
+        }
 
     }
 
-    public void insert(String key) {
 
-        // Try catch to see if a key failed, what the given key was
-        try {
-
+    private void insert(String key) {
             TrieNode node = root;
 
             char[] keyChars = key.toLowerCase().toCharArray();
@@ -51,6 +45,7 @@ public class Trie {
                     TrieNode newNode = new TrieNode();
                     node.children[idx] = newNode;
                     node = newNode;
+                    this.insertCounter++;
                 } else {
                     node = node.children[idx];
                 }
@@ -60,38 +55,61 @@ public class Trie {
             int count = node.getCount();
             node.setCount(count + 1);
             node.setWord(key);
-
-        } catch (Exception e) {
-            // Adds to a list of keys that went wrong
-            errors.add(key);
-        }
     }
 
-    public void findAll(TrieNode node) {
+    private List<Pair> findAll(TrieNode node, List<Pair> pairs) {
+        if(pairs == null){
+            pairs = new ArrayList();
+        }
 
         if (node.isWord) {
-            stringsFound.add(new Pair(node.getCount(), node.word));
+            pairs.add(new Pair(node.getCount(), node.word));
         }
 
         for (int i = 0; i < node.children.length; i++) {
             if (node.children[i] != null) {
-                findAll(node.children[i]);
+                findAll(node.children[i], pairs);
             }
 
         }
-
+        return pairs;
     }
 
-    public TrieNode getRoot() {
+    public Pair search(String word) {
+        TrieNode node = getRoot();
+         word = word.toLowerCase();
+
+
+
+        for (int i = 0; i < word.length(); i++) {
+            insertCounter++;
+            int idx = word.charAt(i) - 'a';
+            if (word.charAt(i) == '\'') {
+                idx = 26;
+            }
+            if (node.children[idx] != null) {
+                node = node.children[idx];
+                if (node.isWord) {
+                    return (new Pair(node.getCount(), node.word));
+                }
+            }else{
+                break;
+            }
+        }
+        return null;
+    }
+
+
+    public Integer getInsertCounter() {
+        return insertCounter;
+    }
+
+    public void setInsertCounter(Integer insertCounter) {
+        this.insertCounter = insertCounter;
+    }
+
+    private TrieNode getRoot() {
         return root;
-    }
-
-    public List<Pair> getStringsFound() {
-        return stringsFound;
-    }
-
-    public List<String> getErrors() {
-        return errors;
     }
 
     private class TrieNode {
@@ -122,16 +140,8 @@ public class Trie {
             return count;
         }
 
-        public boolean isIsWord() {
-            return isWord;
-        }
-
         public void setWord(String word) {
             this.word = word;
-        }
-
-        public String getWord() {
-            return word;
         }
 
     }
@@ -144,6 +154,10 @@ public class Trie {
         public Pair(int count, String name) {
             this.count = count;
             this.name = name;
+        }
+
+        public String getName() {
+            return name;
         }
 
         @Override
