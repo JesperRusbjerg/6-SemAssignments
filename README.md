@@ -1,7 +1,8 @@
 # 6-SemAssignments
-**Please look in JesperBankTesting for the current test assignment**
-- in src/main/java/dk/cphbusiness/rest - Banking file -> you will find a simple implementation of a rest api based on bank accounts which will later be used for my frontend
-- in src/test/java/dk.cphbusiness/banking/restTest -> you will find an example of this rest API being tested
+**Current front-end-test assignment please check the following:**
+**The project can be found in the "JesperBankTesting" folder **
+- To find the Rest api that the front end calls, look here: https://github.com/JesperRusbjerg/6-SemAssignments/blob/master/jesperBankTesting/banking/src/main/java/dk/cphbusiness/rest/Banking.java
 
-The way it works: Before the test runs, it sets the DBConeection to the test database, then the tests are performed and the connection is swapped back to the realDB connection.. The tests run on a virtual web server that gets created to run the given tests :)
+- The frontend that the tests test can be found here: https://github.com/JesperRusbjerg/6-SemAssignments/tree/master/bankfrontend
 
+- The unit tests to the frontend, can be found here: https://github.com/JesperRusbjerg/6-SemAssignments/blob/master/jesperBankTesting/banking/src/test/java/dk/cphbusiness/banking/testFrontend/TestFrontEnd.java
