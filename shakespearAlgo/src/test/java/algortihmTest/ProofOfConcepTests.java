@@ -6,6 +6,7 @@ import algorithms.Trie;
 import entity.Person;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import java.util.Random;
 
@@ -30,7 +31,7 @@ public class ProofOfConcepTests {
 
     @Test
     public void Test_Trie_Search_is_OofLength_True() {
-        String[] test = {"Jesper"};
+        String[] test = {"Jesper", "Per", "Perlt", "Anders", "Martin"};
 
         Trie t = new Trie();
         t.CreateTrie(test);
@@ -43,6 +44,27 @@ public class ProofOfConcepTests {
 
         Assert.assertEquals(amountOfOperations, expectedAmountOfOperations);
         Assert.assertEquals(p.getName(), test[0]);
+    }
+
+    @Test
+    public void Test_Trie_Worst_Case_Space_Complexity(){
+
+        String[] test = {"Jesper", "Pe", "Xylvia", "Ander", "Martin", "Catha"};
+        Trie t = new Trie();
+        t.CreateTrie(test);
+
+        // (Avg word length * amount of words * length of array it stores(sizeOfAlphabet)
+        int averageLengthOfWord = 0;
+
+        for(String str: test){
+            averageLengthOfWord += str.length();
+        }
+        averageLengthOfWord = averageLengthOfWord/test.length;
+
+        int totalSpace = averageLengthOfWord*test.length*Trie.sizeOfAlphabet;
+        int size = t.getSpace();
+
+        Assert.assertEquals(totalSpace, size);
 
     }
 
@@ -141,12 +163,57 @@ public class ProofOfConcepTests {
 
     }
 
+    @Test
+    public void Test_Merge_sort_Space_complexity(){
+
+        Random r = new Random();
+        String alphabet = "123xyzabcdefghijklmn";
+        Person[] people2 = new Person[2];
+        Person[] people4 = new Person[4];
+        Person[] people8 = new Person[8];
+        Person[] people16 = new Person[16];
+        Person[] people32 = new Person[32];
+        for (int i = 0; i < 32; i++) {
+            if (i < 2) people2[i] = new Person("Peter" + alphabet.charAt(r.nextInt(alphabet.length())), i);
+            if (i < 4) people4[i] = new Person("Peter" + alphabet.charAt(r.nextInt(alphabet.length())), i);
+            if (i < 8) people8[i] = new Person("Peter" + alphabet.charAt(r.nextInt(alphabet.length())), i);
+            if (i < 16) people16[i] = new Person("Peter" + alphabet.charAt(r.nextInt(alphabet.length())), i);
+            people32[i] = new Person("Peter" + alphabet.charAt(r.nextInt(alphabet.length())), i);
+        }
+        GenericMergeSort<Person> gms = new GenericMergeSort();
+        gms.sortTheMerge(people2);
+        int spaceComplexity2 = gms.getSpaceComplexity();
+        Assert.assertEquals(spaceComplexity2, 2);
+        gms.setSpaceComplexity(0);
+
+        gms.sortTheMerge(people4);
+        int spaceComplexity4 = gms.getSpaceComplexity();
+        Assert.assertEquals(spaceComplexity4, 4);
+        gms.setSpaceComplexity(0);
+
+        gms.sortTheMerge(people8);
+        int spaceComplexity8 = gms.getSpaceComplexity();
+        Assert.assertEquals(spaceComplexity8, 8);
+        gms.setSpaceComplexity(0);
+
+        gms.sortTheMerge(people16);
+        int spaceComplexity16 = gms.getSpaceComplexity();
+        Assert.assertEquals(spaceComplexity16, 16);
+        gms.setSpaceComplexity(0);
+
+        gms.sortTheMerge(people32);
+        int spaceComplexity32 = gms.getSpaceComplexity();
+        Assert.assertEquals(spaceComplexity32, 32);
+        gms.setSpaceComplexity(0);
+
+    }
+
     //n^2 proof for insertion sort
 
     @Test
     public void Test_Selectionsort_Sort_N_squared(){
         Random r = new Random();
-        String alphabet = "123xyzabcdefghijklmn";
+        String alphabet = "xyzabcdefghijklmn";
         Person[] people2 = new Person[2];
         Person[] people4 = new Person[4];
         Person[] people8 = new Person[8];
@@ -167,43 +234,58 @@ public class ProofOfConcepTests {
         int twoElements = gss.getamountOfN();
         gss.setamountOfN(0);
         int n = people2.length;
-        int twoElementsCalculation = (n*n-n)/2;
+        int twoElementsCalculation = 2/(n*n-n);
+        Assert.assertEquals(twoElementsCalculation, twoElements);
 
 
         gss.sort(people4);
         int fourElements = gss.getamountOfN();
         gss.setamountOfN(0);
-        n = people4.length;
+         n = people4.length;
         int fourElementsCalculation = (n*n-n)/2;
+        Assert.assertEquals(fourElementsCalculation, fourElements);
 
         gss.sort(people8);
         int eightElements = gss.getamountOfN();
         gss.setamountOfN(0);
         n = people8.length;
         int eightElementsCalculation = (n*n-n)/2;
+        Assert.assertEquals(eightElementsCalculation, eightElements);
 
         gss.sort(people16);
         int sixteenElements = gss.getamountOfN();
         gss.setamountOfN(0);
         n = people16.length;
         int sixTeenElementsCalculation = (n*n-n)/2;
+        Assert.assertEquals(sixTeenElementsCalculation, sixteenElements);
 
         gss.sort(people32);
         int thirtyTwoElements = gss.getamountOfN();
         gss.setamountOfN(0);
         n = people32.length;
         int thirtyTwoElementsCalculation = ((n*n-n)/2);
-        int x = n*n;
-
-        System.out.println("hej");
-
-
+        Assert.assertEquals(thirtyTwoElementsCalculation, thirtyTwoElements);
 
 
     }
 
+    //Pretty stupid test, created it for the sake of it
+    @Test
+    public void Test_Selection_sort_time_complexity(){
 
-    // Make example that shows trie worst case space complexity
+        Random r = new Random();
+        String alphabet = "123xyzabcdefghijklmn";
+        Person[] people32 = new Person[32];
+        for (int i = 0; i < 32; i++) {
+            people32[i] = new Person("Peter" + alphabet.charAt(r.nextInt(alphabet.length())), i);
+        }
+        GenericSelectionSort<Person> gss = new GenericSelectionSort();
+        int spaceUsed = gss.getSpaceComplexity();
+        Assert.assertEquals(spaceUsed, 0);
+    }
+
+
+
 
 
 }

@@ -7,6 +7,8 @@ public class Trie {
 
     TrieNode root = new TrieNode();
     Integer insertCounter = 0;
+    Integer size = 0;
+    public static int sizeOfAlphabet = 27;
 
     public Trie() {
     }
@@ -57,6 +59,11 @@ public class Trie {
             node.setWord(key);
     }
 
+    public int getSpace(){
+        findAll(getRoot(), null);
+        return getSize()*sizeOfAlphabet;
+    }
+
     private List<Pair> findAll(TrieNode node, List<Pair> pairs) {
         if(pairs == null){
             pairs = new ArrayList();
@@ -66,8 +73,9 @@ public class Trie {
             pairs.add(new Pair(node.getCount(), node.word));
         }
 
-        for (int i = 0; i < node.children.length; i++) {
+        for (int i = 0; i < node.children.length-1; i++) {
             if (node.children[i] != null) {
+                size++;
                 findAll(node.children[i], pairs);
             }
 
@@ -78,8 +86,6 @@ public class Trie {
     public Pair search(String word) {
         TrieNode node = getRoot();
          word = word.toLowerCase();
-
-
 
         for (int i = 0; i < word.length(); i++) {
             insertCounter++;
@@ -112,6 +118,10 @@ public class Trie {
         return root;
     }
 
+    public Integer getSize() {
+        return size;
+    }
+
     private class TrieNode {
 
         public TrieNode() {
@@ -121,7 +131,7 @@ public class Trie {
             }
         }
 
-        private int sizeOfAlphabet = 27;
+       private int sizeOfAlphabet = Trie.sizeOfAlphabet;
 
         private int count = 0;
         private boolean isWord = false;
@@ -164,6 +174,5 @@ public class Trie {
         public String toString() {
             return "Name = " + name + " Count: " + count;
         }
-
     }
 }

@@ -3,26 +3,28 @@ package algorithms;
 public class GenericSelectionSort<T extends Comparable<T>> {
 
     private int amountOfN = 0;
+    private int spaceComplexity = 0;
 
     public T[] sort(T[] arr){
 
-        int insert = 0;
-        int smallestIndex;
+        int n = arr.length;
 
-        while(insert < arr.length){
-            smallestIndex = insert;
-            for (int i = 0; i < arr.length; i++) {
-            amountOfN++;
-                if(arr[i].compareTo(arr[smallestIndex]) < 0){
-                    smallestIndex = i;
-                }
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i+1; j < n; j++){
+                amountOfN++;
+                if (arr[j].compareTo(arr[min_idx]) < 0)
+                    min_idx = j;
+
             }
-
-            swap(arr, insert, smallestIndex);
-
-            insert ++;
-
+            // Swap the found minimum element with the first
+            // element
+            swap(arr, min_idx, i);
         }
+
         return arr;
     }
 
@@ -38,5 +40,13 @@ public class GenericSelectionSort<T extends Comparable<T>> {
 
     public void setamountOfN(int amountOfN) {
         this.amountOfN = amountOfN;
+    }
+
+    public int getSpaceComplexity() {
+        return spaceComplexity;
+    }
+
+    public void setSpaceComplexity(int spaceComplexity) {
+        this.spaceComplexity = spaceComplexity;
     }
 }

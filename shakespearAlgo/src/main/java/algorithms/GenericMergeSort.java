@@ -2,6 +2,7 @@ package algorithms;
 
 public class GenericMergeSort<T extends Comparable<T>> {
     private int amountOfN = 0;
+    private int spaceComplexity = 0;
 
 
     public T[] sortTheMerge(T arr[]){
@@ -40,6 +41,12 @@ public class GenericMergeSort<T extends Comparable<T>> {
         Object[] array;
         T[] arrayLeft = (T[]) new Comparable[arraySizeLeft];
         T[] arrayRight = (T[]) new Comparable[arraySizeRight];
+
+        //Constantly updates this variable to the largest space complexity its seen
+        // Spoiler: will end up being N :)
+        if(arrayLeft.length+arrayRight.length > this.spaceComplexity){
+            spaceComplexity = arrayLeft.length+arrayRight.length;
+        }
 
         //Insert values into the left array from original array
         for (int i = 0; i < arraySizeLeft; i++) {
@@ -97,5 +104,13 @@ public class GenericMergeSort<T extends Comparable<T>> {
 
     public void setamountOfN(int amountOfN) {
         this.amountOfN = amountOfN;
+    }
+
+    public int getSpaceComplexity() {
+        return spaceComplexity;
+    }
+
+    public void setSpaceComplexity(int spaceComplexity) {
+        this.spaceComplexity = spaceComplexity;
     }
 }

@@ -6,9 +6,9 @@ public class HeapSort {
 
         int lastNode = (arr.length / 2) - 1;
 
+        //Building max heap
         for (int i = lastNode; i >= 0; i--) {
             heapify(arr, arr.length-1, i);
-
         }
 
     for (int i=arr.length-1; i>=0; i--) 
