@@ -89,7 +89,7 @@ public class main {
 
             gms.sortTheMerge(peoples);
 
-            System.out.println((gms.getamountOfN()));
+            System.out.println((gms.getSpaceComplexity()));
 
 //            ms.sortTheMerge(t1);
             System.out.printf("%5.6f\n", sw.step());

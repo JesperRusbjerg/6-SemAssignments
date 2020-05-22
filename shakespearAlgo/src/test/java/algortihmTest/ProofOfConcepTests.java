@@ -137,29 +137,29 @@ public class ProofOfConcepTests {
         }
         GenericMergeSort<Person> gms = new GenericMergeSort();
         gms.sortTheMerge(people2);
-        int layersNeededFor2Elements = gms.getamountOfN();
+        int layersNeededFor2Elements = gms.getComplexityCounter();
         Assert.assertEquals(layersNeededFor2Elements, 1);
-        gms.setamountOfN(0);
+        gms.setComplexityCounter(0);
 
         gms.sortTheMerge(people4);
-        int layersNeededFor4Elements = gms.getamountOfN();
+        int layersNeededFor4Elements = gms.getComplexityCounter();
         Assert.assertEquals(layersNeededFor4Elements, 2);
-        gms.setamountOfN(0);
+        gms.setComplexityCounter(0);
 
         gms.sortTheMerge(people8);
-        int layersNeededFor8Elements = gms.getamountOfN();
+        int layersNeededFor8Elements = gms.getComplexityCounter();
         Assert.assertEquals(layersNeededFor8Elements, 3);
-        gms.setamountOfN(0);
+        gms.setComplexityCounter(0);
 
         gms.sortTheMerge(people16);
-        int layersNeededFor16Elements = gms.getamountOfN();
+        int layersNeededFor16Elements = gms.getComplexityCounter();
         Assert.assertEquals(layersNeededFor16Elements, 4);
-        gms.setamountOfN(0);
+        gms.setComplexityCounter(0);
 
         gms.sortTheMerge(people32);
-        int layersNeededFor32Elements = gms.getamountOfN();
+        int layersNeededFor32Elements = gms.getComplexityCounter();
         Assert.assertEquals(layersNeededFor32Elements, 5);
-        gms.setamountOfN(0);
+        gms.setComplexityCounter(0);
 
     }
 
@@ -231,37 +231,37 @@ public class ProofOfConcepTests {
         //Formular for calculating amount of operations needed ( 1/2(n^2 -n) which ends up being n^2
 
         gss.sort(people2);
-        int twoElements = gss.getamountOfN();
-        gss.setamountOfN(0);
+        int twoElements = gss.getComplexityCounter();
+        gss.setComplexityCounter(0);
         int n = people2.length;
         int twoElementsCalculation = 2/(n*n-n);
         Assert.assertEquals(twoElementsCalculation, twoElements);
 
 
         gss.sort(people4);
-        int fourElements = gss.getamountOfN();
-        gss.setamountOfN(0);
+        int fourElements = gss.getComplexityCounter();
+        gss.setComplexityCounter(0);
          n = people4.length;
         int fourElementsCalculation = (n*n-n)/2;
         Assert.assertEquals(fourElementsCalculation, fourElements);
 
         gss.sort(people8);
-        int eightElements = gss.getamountOfN();
-        gss.setamountOfN(0);
+        int eightElements = gss.getComplexityCounter();
+        gss.setComplexityCounter(0);
         n = people8.length;
         int eightElementsCalculation = (n*n-n)/2;
         Assert.assertEquals(eightElementsCalculation, eightElements);
 
         gss.sort(people16);
-        int sixteenElements = gss.getamountOfN();
-        gss.setamountOfN(0);
+        int sixteenElements = gss.getComplexityCounter();
+        gss.setComplexityCounter(0);
         n = people16.length;
         int sixTeenElementsCalculation = (n*n-n)/2;
         Assert.assertEquals(sixTeenElementsCalculation, sixteenElements);
 
         gss.sort(people32);
-        int thirtyTwoElements = gss.getamountOfN();
-        gss.setamountOfN(0);
+        int thirtyTwoElements = gss.getComplexityCounter();
+        gss.setComplexityCounter(0);
         n = people32.length;
         int thirtyTwoElementsCalculation = ((n*n-n)/2);
         Assert.assertEquals(thirtyTwoElementsCalculation, thirtyTwoElements);

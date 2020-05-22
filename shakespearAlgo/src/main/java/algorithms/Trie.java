@@ -6,9 +6,13 @@ import java.util.List;
 public class Trie {
 
     TrieNode root = new TrieNode();
+    //Used to show time complexity of an insert
     Integer insertCounter = 0;
     Integer size = 0;
     public static int sizeOfAlphabet = 27;
+    //Used to show this algorithm is N time sorting
+    // It inserts a word, and it is automaticly sorted
+    Integer timeUnits = 0;
 
     public Trie() {
     }
@@ -31,6 +35,9 @@ public class Trie {
 
 
     private void insert(String key) {
+        //Used to show this algorithm is N time sorting
+        // It inserts a word, and it is automaticly sorted
+            timeUnits++;
             TrieNode node = root;
 
             char[] keyChars = key.toLowerCase().toCharArray();
@@ -47,6 +54,7 @@ public class Trie {
                     TrieNode newNode = new TrieNode();
                     node.children[idx] = newNode;
                     node = newNode;
+                    //Used to show time complexity of an insert
                     this.insertCounter++;
                 } else {
                     node = node.children[idx];
@@ -120,6 +128,10 @@ public class Trie {
 
     public Integer getSize() {
         return size;
+    }
+
+    public Integer getTimeUnits() {
+        return timeUnits;
     }
 
     private class TrieNode {

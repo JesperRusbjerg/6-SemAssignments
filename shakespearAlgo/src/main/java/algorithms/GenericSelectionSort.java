@@ -2,7 +2,7 @@ package algorithms;
 
 public class GenericSelectionSort<T extends Comparable<T>> {
 
-    private int amountOfN = 0;
+    private int complexityCounter = 0;
     private int spaceComplexity = 0;
 
     public T[] sort(T[] arr){
@@ -15,7 +15,7 @@ public class GenericSelectionSort<T extends Comparable<T>> {
             // Find the minimum element in unsorted array
             int min_idx = i;
             for (int j = i+1; j < n; j++){
-                amountOfN++;
+                complexityCounter++;
                 if (arr[j].compareTo(arr[min_idx]) < 0)
                     min_idx = j;
 
@@ -34,12 +34,12 @@ public class GenericSelectionSort<T extends Comparable<T>> {
         arr[b] = temp;
     }
 
-    public int getamountOfN() {
-        return amountOfN;
+    public int getComplexityCounter() {
+        return complexityCounter;
     }
 
-    public void setamountOfN(int amountOfN) {
-        this.amountOfN = amountOfN;
+    public void setComplexityCounter(int complexityCounter) {
+        this.complexityCounter = complexityCounter;
     }
 
     public int getSpaceComplexity() {

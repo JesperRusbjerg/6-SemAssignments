@@ -1,13 +1,13 @@
 package algorithms;
 
 public class GenericMergeSort<T extends Comparable<T>> {
-    private int amountOfN = 0;
+    private int complexityCounter = 0;
     private int spaceComplexity = 0;
 
 
     public T[] sortTheMerge(T arr[]){
         sort(arr, 0, arr.length-1);
-        amountOfN = amountOfN/arr.length;
+        complexityCounter = complexityCounter/arr.length;
         return arr;
     }
 
@@ -78,7 +78,7 @@ public class GenericMergeSort<T extends Comparable<T>> {
                 rightPointer++;
             }
             pointerOriginalArray++;
-            amountOfN++;
+            complexityCounter++;
         }
 
         //Empty the left array if it isnt empty already, at this point one of the arrays will be empty
@@ -86,7 +86,7 @@ public class GenericMergeSort<T extends Comparable<T>> {
             arr[pointerOriginalArray] = arrayLeft[leftPointer];
             leftPointer++;
             pointerOriginalArray++;
-            amountOfN++;
+            complexityCounter++;
         }
 
         // empty the other array if it isnt empty already
@@ -94,16 +94,16 @@ public class GenericMergeSort<T extends Comparable<T>> {
             arr[pointerOriginalArray] = arrayRight[rightPointer];
             rightPointer++;
             pointerOriginalArray++;
-            amountOfN++;
+            complexityCounter++;
         }
     }
 
-    public int getamountOfN() {
-        return amountOfN;
+    public int getComplexityCounter() {
+        return complexityCounter;
     }
 
-    public void setamountOfN(int amountOfN) {
-        this.amountOfN = amountOfN;
+    public void setComplexityCounter(int complexityCounter) {
+        this.complexityCounter = complexityCounter;
     }
 
     public int getSpaceComplexity() {
